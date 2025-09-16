@@ -12,6 +12,11 @@ public class SenGoKrSearchUrlFormatter implements IsbnSearchUrlFormatter {
     }
 
     @Override
+    public String getLibraryCode(String homePage) {
+        return null;
+    }
+
+    @Override
     public String format(String homePage) {
         if (homePage == null || homePage.isBlank()) {
             throw new IllegalArgumentException("URL이 비어있음");
