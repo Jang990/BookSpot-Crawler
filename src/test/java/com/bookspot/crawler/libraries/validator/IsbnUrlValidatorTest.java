@@ -4,7 +4,7 @@ import com.bookspot.crawler.libraries.formatter.JneGoKrIsbnSearchUrlFormatter;
 import com.bookspot.crawler.libraries.formatter.SenGoKrSearchUrlFormatter;
 import org.junit.jupiter.api.Test;
 
-class UrlValidatorTest {
+class IsbnUrlValidatorTest {
     @Test
     void 전라남도_도서관_검증() {
         int expectedLibraryCnt = 21;
