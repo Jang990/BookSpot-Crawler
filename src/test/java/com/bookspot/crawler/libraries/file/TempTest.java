@@ -1,6 +1,7 @@
 package com.bookspot.crawler.libraries.file;
 
 import com.bookspot.crawler.libraries.IsbnSearchUrlFormatter;
+import com.bookspot.crawler.libraries.JneGoKrIsbnSearchUrlFormatter;
 import com.bookspot.crawler.libraries.validator.IsbnUrlValidator;
 import com.bookspot.crawler.libraries.validator.JneGoKrUrlValidator;
 import com.bookspot.crawler.libraries.SenGoKrSearchUrlFormatter;
@@ -52,8 +53,8 @@ public class TempTest {
 
     private static Stream<Arguments> libraryTestData() {
         return Stream.of(
-//                Arguments.of("전라남도 도서관 검증", 21, new JneGoKrUrlValidator()),
-                Arguments.of("서울 도서관 검증", 23, new SenGoKrSearchUrlFormatter())
+                Arguments.of("전라남도 도서관 검증", 21, new JneGoKrIsbnSearchUrlFormatter(), new JneGoKrUrlValidator())
+//                Arguments.of("서울 도서관 검증", 23, new SenGoKrSearchUrlFormatter())
         );
     }
 }
