@@ -1,35 +1,25 @@
-package com.bookspot.crawler.libraries.file;
+package com.bookspot.crawler.libraries.validator;
 
+import com.bookspot.crawler.libraries.file.LibraryHomePagesFileReader;
+import com.bookspot.crawler.libraries.file.LibraryPageDto;
 import com.bookspot.crawler.libraries.formatter.IsbnSearchUrlFormatter;
-import com.bookspot.crawler.libraries.formatter.JneGoKrIsbnSearchUrlFormatter;
-import com.bookspot.crawler.libraries.validator.IsbnUrlValidator;
-import com.bookspot.crawler.libraries.formatter.SenGoKrSearchUrlFormatter;
-import com.bookspot.crawler.libraries.validator.JneGoKrUrlValidator;
-import com.bookspot.crawler.libraries.validator.SenGoKrUrlValidator;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class TempTest {
-    LibraryHomePagesFileReader reader = new LibraryHomePagesFileReader();
-
-    String[] expectedIsbn13Array = {
+public class ValidatorTestRunner {
+    static String[] expectedIsbn13Array = {
             "9788936434120" // 소년이 온다
 //            "9791168418011" // 흔한남매. 16
     };
 
-    List<LibraryPageDto> csvData = reader.readLibrariesFromCsv("files/libraryHomePages_Prod.csv");
+    static LibraryHomePagesFileReader reader = new LibraryHomePagesFileReader();
+    static List<LibraryPageDto> csvData = reader.readLibrariesFromCsv("files/libraryHomePages_Prod.csv");
 
-
-    @ParameterizedTest(name = "{0}")
-    @MethodSource("libraryTestData")
-    void test(String title, int relatedLibraryCount, IsbnSearchUrlFormatter formatter, IsbnUrlValidator validator) {
+    static void run(int relatedLibraryCount, IsbnSearchUrlFormatter formatter, IsbnUrlValidator validator) {
         List<LibraryPageDto> relatedLibraries = csvData.stream()
                 .filter(formatter::supports)
                 .toList();
@@ -56,12 +46,5 @@ public class TempTest {
             System.out.println(unsupportedLibrary);
         }
         assertTrue(unsupportedLibraries.isEmpty());
-    }
-
-    private static Stream<Arguments> libraryTestData() {
-        return Stream.of(
-                Arguments.of("전라남도 도서관 검증", 21, new JneGoKrIsbnSearchUrlFormatter(), new JneGoKrUrlValidator()),
-                Arguments.of("서울 도서관 검증", 23, new SenGoKrSearchUrlFormatter(), new SenGoKrUrlValidator())
-        );
     }
 }
