@@ -1,5 +1,6 @@
 package com.bookspot.crawler.libraries;
 
+import com.bookspot.crawler.libraries.formatter.JneGoKrIsbnSearchUrlFormatter;
 import com.bookspot.crawler.libraries.validator.JneGoKrUrlValidator;
 import org.junit.jupiter.api.Test;
 

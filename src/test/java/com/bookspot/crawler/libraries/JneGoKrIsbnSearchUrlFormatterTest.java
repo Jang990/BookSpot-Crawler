@@ -1,5 +1,6 @@
 package com.bookspot.crawler.libraries;
 
+import com.bookspot.crawler.libraries.formatter.JneGoKrIsbnSearchUrlFormatter;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;

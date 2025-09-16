@@ -1,8 +1,8 @@
 package com.bookspot.crawler.libraries.file;
 
-import com.bookspot.crawler.libraries.IsbnSearchUrlFormatter;
+import com.bookspot.crawler.libraries.formatter.IsbnSearchUrlFormatter;
 import com.bookspot.crawler.libraries.validator.IsbnUrlValidator;
-import com.bookspot.crawler.libraries.SenGoKrSearchUrlFormatter;
+import com.bookspot.crawler.libraries.formatter.SenGoKrSearchUrlFormatter;
 import com.bookspot.crawler.libraries.validator.SenGoKrUrlValidator;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;

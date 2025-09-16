@@ -1,5 +1,6 @@
 package com.bookspot.crawler.libraries;
 
+import com.bookspot.crawler.libraries.formatter.SenGoKrSearchUrlFormatter;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

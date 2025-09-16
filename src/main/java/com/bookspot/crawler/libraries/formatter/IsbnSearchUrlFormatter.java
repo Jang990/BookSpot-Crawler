@@ -1,4 +1,4 @@
-package com.bookspot.crawler.libraries;
+package com.bookspot.crawler.libraries.formatter;
 
 public interface IsbnSearchUrlFormatter {
     boolean supports(String homePage);

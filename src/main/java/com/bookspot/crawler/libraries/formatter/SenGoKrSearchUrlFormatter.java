@@ -1,4 +1,4 @@
-package com.bookspot.crawler.libraries;
+package com.bookspot.crawler.libraries.formatter;
 
 import java.net.URI;
 import java.net.URISyntaxException;
