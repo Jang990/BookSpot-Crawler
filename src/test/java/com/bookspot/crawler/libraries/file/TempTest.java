@@ -1,33 +1,44 @@
 package com.bookspot.crawler.libraries.file;
 
+import com.bookspot.crawler.libraries.IsbnSearchUrlFormatter;
 import com.bookspot.crawler.libraries.JneGoKrIsbnSearchUrlFormatter;
 import com.bookspot.crawler.libraries.JneGoKrUrlValidator;
-import org.junit.jupiter.api.Assertions;
+import com.bookspot.crawler.libraries.SenGoKrSearchUrlFormatter;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TempTest {
     LibraryHomePagesFileReader reader = new LibraryHomePagesFileReader();
-    JneGoKrIsbnSearchUrlFormatter formatter = new JneGoKrIsbnSearchUrlFormatter();
     JneGoKrUrlValidator validator = new JneGoKrUrlValidator();
 
     String expectedIsbn13 = "9788936434120"; // 소년이 온다
 
-    @Test
-    void 전라남도_도서관_검증_29() {
-        List<LibraryPageDto> result = reader.readLibrariesFromCsv("files/libraryHomePages_Prod.csv");
-        List<LibraryPageDto> unsupportedLibraries = result.stream()
+    List<LibraryPageDto> csvData = reader.readLibrariesFromCsv("files/libraryHomePages_Prod.csv");
+
+
+    @ParameterizedTest(name = "{0}")
+    @MethodSource("libraryTestData")
+    void test(String title, int relatedLibraryCount, IsbnSearchUrlFormatter formatter) {
+        List<LibraryPageDto> relatedLibraries = csvData.stream()
                 .filter(dto -> formatter.supports(dto.homePage()))
+                .toList();
+        assertEquals(relatedLibraryCount, relatedLibraries.size());
+
+        List<LibraryPageDto> unsupportedLibraries = relatedLibraries.stream()
                 .filter(dto -> {
                     try {
+                        String code = formatter.getLibraryCode(dto.homePage());
                         String prefix = formatter.format(dto.homePage());
-                        String code = JneGoKrIsbnSearchUrlFormatter.homePageAndCode.get(dto.homePage());
-                        validator.checkSearchPage(prefix, expectedIsbn13, code);
-                        return false;
+                        return !validator.checkSearchPage(prefix, expectedIsbn13, code);
                     } catch (IllegalArgumentException e) {
                         return true;
                     } catch (IOException e) {
@@ -36,6 +47,16 @@ public class TempTest {
                 })
                 .toList();
 
+        for (LibraryPageDto unsupportedLibrary : unsupportedLibraries) {
+            System.out.println(unsupportedLibrary);
+        }
         assertTrue(unsupportedLibraries.isEmpty());
+    }
+
+    private static Stream<Arguments> libraryTestData() {
+        return Stream.of(
+                Arguments.of("전라남도 도서관 검증", 21, new JneGoKrIsbnSearchUrlFormatter())
+//                Arguments.of("서울 도서관 검증", 23, new SenGoKrSearchUrlFormatter())
+        );
     }
 }
