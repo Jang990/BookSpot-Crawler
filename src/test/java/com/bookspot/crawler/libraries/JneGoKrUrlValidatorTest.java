@@ -1,11 +1,10 @@
 package com.bookspot.crawler.libraries;
 
+import com.bookspot.crawler.libraries.validator.JneGoKrUrlValidator;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.Map;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class JneGoKrUrlValidatorTest {
     Map<String, String> homePageAndCode = JneGoKrIsbnSearchUrlFormatter.homePageAndCode;

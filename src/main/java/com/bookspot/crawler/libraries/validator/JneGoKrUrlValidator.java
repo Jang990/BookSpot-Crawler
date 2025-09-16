@@ -1,4 +1,4 @@
-package com.bookspot.crawler.libraries;
+package com.bookspot.crawler.libraries.validator;
 
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
@@ -11,8 +11,9 @@ import java.io.IOException;
 
 @Slf4j
 @Component
-public class JneGoKrUrlValidator {
+public class JneGoKrUrlValidator implements IsbnUrlValidator {
 
+    @Override
     public boolean checkSearchPage(String prefix, String expectedIsbn, String targetSearchKind) throws IOException {
         log.trace("페이지 확인 중: {}", prefix);
 
