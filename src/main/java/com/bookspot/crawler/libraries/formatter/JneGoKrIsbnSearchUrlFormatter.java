@@ -1,5 +1,7 @@
 package com.bookspot.crawler.libraries.formatter;
 
+import com.bookspot.crawler.libraries.file.LibraryPageDto;
+
 import java.util.Map;
 
 public class JneGoKrIsbnSearchUrlFormatter implements IsbnSearchUrlFormatter {
@@ -30,19 +32,20 @@ public class JneGoKrIsbnSearchUrlFormatter implements IsbnSearchUrlFormatter {
     );
 
     @Override
-    public boolean supports(String homePage) {
-        return homePage.contains(SUPPORTED_DOMAIN);
+    public boolean supports(LibraryPageDto dto) {
+        return dto.homePage().contains(SUPPORTED_DOMAIN);
     }
 
     @Override
-    public String getLibraryCode(String homePage) {
-        return homePageAndCode.get(homePage);
+    public String getLibraryCode(LibraryPageDto dto) {
+        return homePageAndCode.get(dto.homePage());
     }
 
     @Override
-    public String format(String homePage) {
+    public String format(LibraryPageDto dto) {
+        String homePage = dto.homePage();
         if(!homePageAndCode.containsKey(homePage))
             throw new IllegalArgumentException("지원하지 않는 홈페이지. homePageAndCode에 관련 데이터 추가 필요 => " + homePage);
-        return COMMON_ISBN_PREFIX_FORMAT.formatted(homePageAndCode.get(homePage));
+        return COMMON_ISBN_PREFIX_FORMAT.formatted(getLibraryCode(dto));
     }
 }

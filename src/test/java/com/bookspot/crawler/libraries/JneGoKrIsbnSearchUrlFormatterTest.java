@@ -1,5 +1,6 @@
 package com.bookspot.crawler.libraries;
 
+import com.bookspot.crawler.libraries.file.LibraryPageDto;
 import com.bookspot.crawler.libraries.formatter.JneGoKrIsbnSearchUrlFormatter;
 import org.junit.jupiter.api.Test;
 
@@ -14,14 +15,16 @@ class JneGoKrIsbnSearchUrlFormatterTest {
 
     @Test
     void test() {
+        // 벌교
         assertEquals(
                 "https://bglib.jne.go.kr/book/search_book/search.es?mid=a90101010100&searchKind=00146013&vSrchText0=",
-                formatter.format("http://bglib.jne.go.kr/")
+                formatter.format(new LibraryPageDto(null, null, "http://bglib.jne.go.kr/"))
         );
 
+        // 보성
         assertEquals(
                 "https://bglib.jne.go.kr/book/search_book/search.es?mid=a90101010100&searchKind=00146012&vSrchText0=",
-                formatter.format("http://bslib.jne.go.kr/")
+                formatter.format(new LibraryPageDto(null, null, "http://bslib.jne.go.kr/"))
         );
     }
 

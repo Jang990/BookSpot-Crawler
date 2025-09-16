@@ -1,5 +1,7 @@
 package com.bookspot.crawler.libraries.formatter;
 
+import com.bookspot.crawler.libraries.file.LibraryPageDto;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -7,17 +9,18 @@ public class SenGoKrSearchUrlFormatter implements IsbnSearchUrlFormatter {
     private static final String SUPPORTED_DOMAIN = "sen.go.kr";
     private static final String SUFFIX = "/intro/search/index.do?menu_idx=4&editMode=normal&search_text=";
 
-    public boolean supports(String homePage) {
-        return homePage.contains(SUPPORTED_DOMAIN);
+    public boolean supports(LibraryPageDto dto) {
+        return dto.homePage().contains(SUPPORTED_DOMAIN);
     }
 
     @Override
-    public String getLibraryCode(String homePage) {
+    public String getLibraryCode(LibraryPageDto dto) {
         return null;
     }
 
     @Override
-    public String format(String homePage) {
+    public String format(LibraryPageDto dto) {
+        String homePage = dto.homePage();
         if (homePage == null || homePage.isBlank()) {
             throw new IllegalArgumentException("URL이 비어있음");
         }
