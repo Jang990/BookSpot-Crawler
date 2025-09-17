@@ -46,4 +46,12 @@ public class ValidatorTestRunner {
         }
         assertTrue(unsupportedLibraries.isEmpty());
     }
+
+    static void printRelatedLibrary(IsbnSearchUrlFormatter formatter) {
+        csvData.stream()
+                .filter(formatter::supports)
+                .forEach(lib ->
+                        System.out.println(lib.name() + " | " + lib.homePage() + " | " + formatter.format(lib))
+                );
+    }
 }

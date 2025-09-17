@@ -6,6 +6,8 @@ import com.bookspot.crawler.libraries.prefix.bcl.BclGoKrUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.bcl.BclGoKrUrlValidator;
 import com.bookspot.crawler.libraries.prefix.cne.CneUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.cne.CneUrlValidator;
+import com.bookspot.crawler.libraries.prefix.gne.GneUrlFormatter;
+import com.bookspot.crawler.libraries.prefix.gne.GneUrlValidator;
 import com.bookspot.crawler.libraries.prefix.ignore.IgnoreIsbnSearchUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.ignore.IgnoreUrlValidator;
 import com.bookspot.crawler.libraries.prefix.jne.JneGoKrIsbnSearchUrlFormatter;
@@ -73,6 +75,20 @@ class IsbnUrlValidatorTest {
                 new CneUrlFormatter(),
                 new CneUrlValidator()
         );
+    }
+
+    @Test
+    void 경상남도() {
+        ValidatorTestRunner.run(
+                27,
+                new GneUrlFormatter(),
+                new GneUrlValidator()
+        );
+    }
+
+//    @Test
+    void test() {
+        ValidatorTestRunner.printRelatedLibrary(new GneUrlFormatter());
     }
 
 }
