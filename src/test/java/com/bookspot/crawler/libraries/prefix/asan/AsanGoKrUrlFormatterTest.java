@@ -13,24 +13,24 @@ class AsanGoKrUrlFormatterTest {
         // 중앙
         assertTrue(
                 formatter.format(
-                                new LibraryPageDto(null, "아산시 중앙도서관", null))
+                                new LibraryPageDto(null, "아산시 중앙도서관", "TEMP"))
                         .contains("MF")
         );
         assertFalse(
                 formatter.format(
-                                new LibraryPageDto(null, "아산시 중앙도서관", null))
+                                new LibraryPageDto(null, "아산시 중앙도서관", "TEMP"))
                         .contains("null")
         );
 
         // 꿈샘
         assertTrue(
                 formatter.format(
-                        new LibraryPageDto(null, "아산시 꿈샘어린이청소년도서관", null))
+                        new LibraryPageDto(null, "아산시 꿈샘어린이청소년도서관", "TEMP"))
                         .contains("CH")
         );
         assertFalse(
                 formatter.format(
-                                new LibraryPageDto(null, "아산시 꿈샘어린이청소년도서관", null))
+                                new LibraryPageDto(null, "아산시 꿈샘어린이청소년도서관", "TEMP"))
                         .contains("null")
         );
     }
