@@ -1,4 +1,6 @@
-package com.bookspot.crawler.libraries.validator;
+package com.bookspot.crawler.libraries.prefix.bcl;
+
+import com.bookspot.crawler.libraries.prefix.IsbnUrlValidator;
 
 import java.io.IOException;
 

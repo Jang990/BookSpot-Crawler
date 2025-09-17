@@ -1,4 +1,4 @@
-package com.bookspot.crawler.libraries.validator;
+package com.bookspot.crawler.libraries.prefix;
 
 import java.io.IOException;
 

@@ -1,9 +1,13 @@
-package com.bookspot.crawler.libraries.validator;
+package com.bookspot.crawler.libraries.prefix;
 
-import com.bookspot.crawler.libraries.formatter.AsanGoKrUrlFormatter;
-import com.bookspot.crawler.libraries.formatter.BclGoKrUrlFormatter;
-import com.bookspot.crawler.libraries.formatter.JneGoKrIsbnSearchUrlFormatter;
-import com.bookspot.crawler.libraries.formatter.SenGoKrSearchUrlFormatter;
+import com.bookspot.crawler.libraries.prefix.asan.AsanGoKrUrlFormatter;
+import com.bookspot.crawler.libraries.prefix.asan.AsanGoKrUrlValidator;
+import com.bookspot.crawler.libraries.prefix.bcl.BclGoKrUrlFormatter;
+import com.bookspot.crawler.libraries.prefix.bcl.BclGoKrUrlValidator;
+import com.bookspot.crawler.libraries.prefix.jne.JneGoKrIsbnSearchUrlFormatter;
+import com.bookspot.crawler.libraries.prefix.jne.JneGoKrUrlValidator;
+import com.bookspot.crawler.libraries.prefix.sen.SenGoKrSearchUrlFormatter;
+import com.bookspot.crawler.libraries.prefix.sen.SenGoKrUrlValidator;
 import org.junit.jupiter.api.Test;
 
 class IsbnUrlValidatorTest {

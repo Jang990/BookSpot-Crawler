@@ -1,5 +1,6 @@
-package com.bookspot.crawler.libraries.validator;
+package com.bookspot.crawler.libraries.prefix.jne;
 
+import com.bookspot.crawler.libraries.prefix.IsbnUrlValidator;
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

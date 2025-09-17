@@ -1,6 +1,7 @@
-package com.bookspot.crawler.libraries.formatter;
+package com.bookspot.crawler.libraries.prefix.sen;
 
 import com.bookspot.crawler.libraries.file.LibraryPageDto;
+import com.bookspot.crawler.libraries.prefix.IsbnSearchUrlFormatter;
 
 import java.net.URI;
 import java.net.URISyntaxException;

@@ -1,8 +1,7 @@
-package com.bookspot.crawler.libraries.validator;
+package com.bookspot.crawler.libraries.prefix;
 
 import com.bookspot.crawler.libraries.file.LibraryHomePagesFileReader;
 import com.bookspot.crawler.libraries.file.LibraryPageDto;
-import com.bookspot.crawler.libraries.formatter.IsbnSearchUrlFormatter;
 
 import java.io.IOException;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.bookspot.crawler.libraries.formatter;
+package com.bookspot.crawler.libraries.prefix.asan;
 
 import com.bookspot.crawler.libraries.file.LibraryPageDto;
 import org.junit.jupiter.api.Test;

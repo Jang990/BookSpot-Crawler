@@ -1,7 +1,6 @@
-package com.bookspot.crawler.libraries;
+package com.bookspot.crawler.libraries.prefix.jne;
 
 import com.bookspot.crawler.libraries.file.LibraryPageDto;
-import com.bookspot.crawler.libraries.formatter.JneGoKrIsbnSearchUrlFormatter;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;

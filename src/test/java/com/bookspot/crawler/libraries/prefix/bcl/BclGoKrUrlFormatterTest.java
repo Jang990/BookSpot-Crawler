@@ -1,4 +1,4 @@
-package com.bookspot.crawler.libraries.formatter;
+package com.bookspot.crawler.libraries.prefix.bcl;
 
 import com.bookspot.crawler.libraries.file.LibraryPageDto;
 import org.junit.jupiter.api.Test;
@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-class bclGoKrUrlFormatterTest {
+class BclGoKrUrlFormatterTest {
     BclGoKrUrlFormatter formatter = new BclGoKrUrlFormatter();
 
     @Test

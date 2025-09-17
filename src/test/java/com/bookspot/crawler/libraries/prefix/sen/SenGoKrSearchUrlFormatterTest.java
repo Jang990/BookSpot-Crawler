@@ -1,7 +1,6 @@
-package com.bookspot.crawler.libraries;
+package com.bookspot.crawler.libraries.prefix.sen;
 
 import com.bookspot.crawler.libraries.file.LibraryPageDto;
-import com.bookspot.crawler.libraries.formatter.SenGoKrSearchUrlFormatter;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

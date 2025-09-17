@@ -1,6 +1,7 @@
-package com.bookspot.crawler.libraries.formatter;
+package com.bookspot.crawler.libraries.prefix.bcl;
 
 import com.bookspot.crawler.libraries.file.LibraryPageDto;
+import com.bookspot.crawler.libraries.prefix.IsbnSearchUrlFormatter;
 
 
 public class BclGoKrUrlFormatter implements IsbnSearchUrlFormatter {
