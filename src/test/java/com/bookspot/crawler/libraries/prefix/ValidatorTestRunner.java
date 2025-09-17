@@ -29,8 +29,8 @@ public class ValidatorTestRunner {
                     try {
                         String code = formatter.getLibraryCode(dto);
                         String prefix = formatter.format(dto);
-                        System.out.println(dto.name() + " | " + prefix);
                         for (String expectedIsbn13 : expectedIsbn13Array) {
+                            System.out.println(dto.name() + " | " + prefix + expectedIsbn13);
                             if(validator.checkSearchPage(prefix, expectedIsbn13, code))
                                 return false;
                         }

@@ -13,11 +13,15 @@ public class CneUrlFormatter implements IsbnSearchUrlFormatter {
 
     @Override
     public String getLibraryCode(LibraryPageDto dto) {
-        return "";
+        return null;
     }
 
     @Override
     public String format(LibraryPageDto dto) {
-        return "";
+        String homePage = dto.homePage();
+        if(homePage.endsWith("/"))
+            return homePage + "api/srch/bookSearch.do?searchCondition=ALL&searchTxt=";
+        else
+            return homePage + "/api/srch/bookSearch.do?searchCondition=ALL&searchTxt=";
     }
 }

@@ -4,6 +4,8 @@ import com.bookspot.crawler.libraries.prefix.asan.AsanGoKrUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.asan.AsanGoKrUrlValidator;
 import com.bookspot.crawler.libraries.prefix.bcl.BclGoKrUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.bcl.BclGoKrUrlValidator;
+import com.bookspot.crawler.libraries.prefix.cne.CneUrlFormatter;
+import com.bookspot.crawler.libraries.prefix.cne.CneUrlValidator;
 import com.bookspot.crawler.libraries.prefix.ignore.IgnoreIsbnSearchUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.ignore.IgnoreUrlValidator;
 import com.bookspot.crawler.libraries.prefix.jne.JneGoKrIsbnSearchUrlFormatter;
@@ -60,6 +62,16 @@ class IsbnUrlValidatorTest {
                 expectedLibraryCnt,
                 new BclGoKrUrlFormatter(),
                 new BclGoKrUrlValidator()
+        );
+    }
+
+    @Test
+    void 충청남도() {
+        int expectedLibraryCnt = 19;
+        ValidatorTestRunner.run(
+                expectedLibraryCnt,
+                new CneUrlFormatter(),
+                new CneUrlValidator()
         );
     }
 
