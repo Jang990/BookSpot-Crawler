@@ -78,7 +78,7 @@ class IsbnUrlValidatorTest {
     }
 
     @Test
-    void 경상남도() {
+    void 경상남도_ISBN검색_미지원() {
         ValidatorTestRunner.run(
                 27,
                 new GneUrlFormatter(),
