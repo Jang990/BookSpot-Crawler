@@ -6,6 +6,8 @@ import com.bookspot.crawler.libraries.prefix.bcl.BclGoKrUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.bcl.BclGoKrUrlValidator;
 import com.bookspot.crawler.libraries.prefix.cne.CneUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.cne.CneUrlValidator;
+import com.bookspot.crawler.libraries.prefix.daegu.dalseong.DalseongDaeguKrUrlFormatter;
+import com.bookspot.crawler.libraries.prefix.daegu.dalseong.DalseongDaeguKrUrlValidator;
 import com.bookspot.crawler.libraries.prefix.gne.GneUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.gne.GneUrlValidator;
 import com.bookspot.crawler.libraries.prefix.ignore.IgnoreIsbnSearchUrlFormatter;
@@ -83,6 +85,15 @@ class IsbnUrlValidatorTest {
                 27,
                 new GneUrlFormatter(),
                 new GneUrlValidator()
+        );
+    }
+
+    @Test
+    void 대구_달성군_도서관_검색_미지원() {
+        ValidatorTestRunner.run(
+                8,
+                new DalseongDaeguKrUrlFormatter(),
+                new DalseongDaeguKrUrlValidator()
         );
     }
 
