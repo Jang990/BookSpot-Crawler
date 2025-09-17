@@ -48,6 +48,8 @@ public class ValidatorTestRunner {
     }
 
     static void printRelatedLibrary(IsbnSearchUrlFormatter formatter) {
+        System.out.println("size = " + csvData.stream().filter(formatter::supports).count());
+
         csvData.stream()
                 .filter(formatter::supports)
                 .forEach(lib ->

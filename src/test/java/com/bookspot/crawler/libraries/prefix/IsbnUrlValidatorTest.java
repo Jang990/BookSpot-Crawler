@@ -1,5 +1,6 @@
 package com.bookspot.crawler.libraries.prefix;
 
+import com.bookspot.crawler.libraries.crawl.common.JsoupCrawler;
 import com.bookspot.crawler.libraries.prefix.asan.AsanGoKrUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.asan.AsanGoKrUrlValidator;
 import com.bookspot.crawler.libraries.prefix.bcl.BclGoKrUrlFormatter;
@@ -8,6 +9,8 @@ import com.bookspot.crawler.libraries.prefix.cne.CneUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.cne.CneUrlValidator;
 import com.bookspot.crawler.libraries.prefix.daegu.dalseong.DalseongDaeguKrUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.daegu.dalseong.DalseongDaeguKrUrlValidator;
+import com.bookspot.crawler.libraries.prefix.gangnam.GangnamUrlFormatter;
+import com.bookspot.crawler.libraries.prefix.gangnam.GangnamUrlValidator;
 import com.bookspot.crawler.libraries.prefix.gne.GneUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.gne.GneUrlValidator;
 import com.bookspot.crawler.libraries.prefix.ignore.IgnoreIsbnSearchUrlFormatter;
@@ -19,6 +22,8 @@ import com.bookspot.crawler.libraries.prefix.sen.SenGoKrUrlValidator;
 import org.junit.jupiter.api.Test;
 
 class IsbnUrlValidatorTest {
+    JsoupCrawler crawler = new JsoupCrawler();
+
     @Test
     void 도서관_검색을_지원하지_않는_홈페이지() {
         int expectedLibraryCnt = 20;
@@ -97,9 +102,18 @@ class IsbnUrlValidatorTest {
         );
     }
 
-//    @Test
+    @Test
+    void 강남도서관_일부_검색_미지원() {
+        ValidatorTestRunner.run(
+                29,
+                new GangnamUrlFormatter(),
+                new GangnamUrlValidator(crawler)
+        );
+    }
+
+    @Test
     void test() {
-        ValidatorTestRunner.printRelatedLibrary(new GneUrlFormatter());
+        ValidatorTestRunner.printRelatedLibrary(new GangnamUrlFormatter());
     }
 
 }
