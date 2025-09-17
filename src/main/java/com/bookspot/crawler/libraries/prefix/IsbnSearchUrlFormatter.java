@@ -4,6 +4,12 @@ import com.bookspot.crawler.libraries.file.LibraryPageDto;
 
 public interface IsbnSearchUrlFormatter {
     boolean supports(LibraryPageDto dto);
-    String getLibraryCode(LibraryPageDto dto);
-    String format(LibraryPageDto dto);
+
+    default String getLibraryCode(LibraryPageDto dto) {
+        return null;
+    }
+
+    default String format(LibraryPageDto dto) {
+        return null;
+    }
 }
