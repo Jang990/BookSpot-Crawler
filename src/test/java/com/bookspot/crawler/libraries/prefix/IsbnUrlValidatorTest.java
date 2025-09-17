@@ -4,6 +4,8 @@ import com.bookspot.crawler.libraries.prefix.asan.AsanGoKrUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.asan.AsanGoKrUrlValidator;
 import com.bookspot.crawler.libraries.prefix.bcl.BclGoKrUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.bcl.BclGoKrUrlValidator;
+import com.bookspot.crawler.libraries.prefix.ignore.IgnoreIsbnSearchUrlFormatter;
+import com.bookspot.crawler.libraries.prefix.ignore.IgnoreUrlValidator;
 import com.bookspot.crawler.libraries.prefix.jne.JneGoKrIsbnSearchUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.jne.JneGoKrUrlValidator;
 import com.bookspot.crawler.libraries.prefix.sen.SenGoKrSearchUrlFormatter;
@@ -11,6 +13,16 @@ import com.bookspot.crawler.libraries.prefix.sen.SenGoKrUrlValidator;
 import org.junit.jupiter.api.Test;
 
 class IsbnUrlValidatorTest {
+    @Test
+    void 도서관_검색을_지원하지_않는_홈페이지() {
+        int expectedLibraryCnt = 20;
+        ValidatorTestRunner.run(
+                expectedLibraryCnt,
+                new IgnoreIsbnSearchUrlFormatter(),
+                new IgnoreUrlValidator()
+        );
+    }
+
     @Test
     void 전라남도_도서관_검증() {
         int expectedLibraryCnt = 21;
