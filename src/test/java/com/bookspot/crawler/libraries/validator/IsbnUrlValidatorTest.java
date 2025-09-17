@@ -1,6 +1,7 @@
 package com.bookspot.crawler.libraries.validator;
 
 import com.bookspot.crawler.libraries.formatter.AsanGoKrUrlFormatter;
+import com.bookspot.crawler.libraries.formatter.BclGoKrUrlFormatter;
 import com.bookspot.crawler.libraries.formatter.JneGoKrIsbnSearchUrlFormatter;
 import com.bookspot.crawler.libraries.formatter.SenGoKrSearchUrlFormatter;
 import org.junit.jupiter.api.Test;
@@ -33,6 +34,16 @@ class IsbnUrlValidatorTest {
                 expectedLibraryCnt,
                 new AsanGoKrUrlFormatter(),
                 new AsanGoKrUrlValidator()
+        );
+    }
+
+    @Test
+    void 부천_도서관_검증__CSR이라_전부_동일_URL() {
+        int expectedLibraryCnt = 38;
+        ValidatorTestRunner.run(
+                expectedLibraryCnt,
+                new BclGoKrUrlFormatter(),
+                new BclGoKrUrlValidator()
         );
     }
 
