@@ -245,4 +245,12 @@ class IsbnUrlValidatorTest {
         );
     }
 
+    @Test
+    void 관악구도서관() {
+        assertEquals(
+                8,
+                ValidatorTestRunner.countRelatedLibrary(new GwanakUrlFormatter())
+        );
+    }
+
 }
