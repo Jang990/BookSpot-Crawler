@@ -59,7 +59,7 @@ public class ValidatorTestRunner {
         csvData.stream()
                 .filter(formatter::supports)
                 .forEach(lib ->
-                        System.out.println(lib.name() + " | " + lib.homePage() + " | " + formatter.format(lib))
+                        System.out.println(lib.name() + " | " + lib.homePage() + " | " + formatter.format(lib)+expectedIsbn13Array[0])
                 );
         return size;
     }

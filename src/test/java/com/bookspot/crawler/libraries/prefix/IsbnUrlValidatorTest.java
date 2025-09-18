@@ -1,6 +1,7 @@
 package com.bookspot.crawler.libraries.prefix;
 
 import com.bookspot.crawler.libraries.crawl.common.JsoupCrawler;
+import com.bookspot.crawler.libraries.prefix.other.AnsanUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.asan.AsanGoKrUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.asan.AsanGoKrUrlValidator;
 import com.bookspot.crawler.libraries.prefix.bcl.BclGoKrUrlFormatter;
@@ -18,7 +19,6 @@ import com.bookspot.crawler.libraries.prefix.gne.GneUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.gne.GneUrlValidator;
 import com.bookspot.crawler.libraries.prefix.icheon.IcheonUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.ignore.IgnoreIsbnSearchUrlFormatter;
-import com.bookspot.crawler.libraries.prefix.ignore.IgnoreUrlValidator;
 import com.bookspot.crawler.libraries.prefix.ignore.OnlyTrueValidator;
 import com.bookspot.crawler.libraries.prefix.jne.JneGoKrIsbnSearchUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.jne.JneGoKrUrlValidator;
@@ -27,7 +27,6 @@ import com.bookspot.crawler.libraries.prefix.other.EunpyeongFormatter;
 import com.bookspot.crawler.libraries.prefix.other.GijangUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.sen.SenGoKrSearchUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.sen.SenGoKrUrlValidator;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -177,6 +176,14 @@ class IsbnUrlValidatorTest {
         assertEquals(
                 7,
                 ValidatorTestRunner.countRelatedLibrary(new GijangUrlFormatter())
+        );
+    }
+
+    @Test
+    void 안산시_도서관_선택_불가능() {
+        assertEquals(
+                27,
+                ValidatorTestRunner.countRelatedLibrary(new AnsanUrlFormatter())
         );
     }
 
