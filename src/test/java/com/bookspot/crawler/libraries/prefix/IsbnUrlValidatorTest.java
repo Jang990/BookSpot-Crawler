@@ -203,7 +203,14 @@ class IsbnUrlValidatorTest {
                 2,
                 ValidatorTestRunner.countRelatedLibrary(new GbgsUrlFormatter())
         );
+    }
 
+    @Test
+    void 광주교육청도서관() {
+        assertEquals(
+                6,
+                ValidatorTestRunner.countRelatedLibrary(new GenUrlFormatter())
+        );
     }
 
 }
