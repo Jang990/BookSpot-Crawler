@@ -16,6 +16,7 @@ import com.bookspot.crawler.libraries.prefix.gangnam.GangnamUrlValidator;
 import com.bookspot.crawler.libraries.prefix.geumcheon.GeumcheonUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.gne.GneUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.gne.GneUrlValidator;
+import com.bookspot.crawler.libraries.prefix.icheon.IcheonUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.ignore.IgnoreIsbnSearchUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.ignore.IgnoreUrlValidator;
 import com.bookspot.crawler.libraries.prefix.ignore.OnlyTrueValidator;
@@ -159,6 +160,14 @@ class IsbnUrlValidatorTest {
         assertEquals(
                 18,
                 ValidatorTestRunner.countRelatedLibrary(new EunpyeongFormatter())
+        );
+    }
+
+    @Test
+    void 이천시_ISBN검색_미지원() {
+        assertEquals(
+                15,
+                ValidatorTestRunner.countRelatedLibrary(new IcheonUrlFormatter())
         );
     }
 
