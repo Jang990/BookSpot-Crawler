@@ -192,7 +192,9 @@ class IsbnUrlValidatorTest {
         );
     }
 
-    /*@Test
-    void */
+    @Test
+    void 강서_도서관_선택_불가능() {
+        ValidatorTestRunner.countRelatedLibrary(new GangseoUrlFormatter());
+    }
 
 }
