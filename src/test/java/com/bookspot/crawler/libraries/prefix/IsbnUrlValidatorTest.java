@@ -23,18 +23,19 @@ import com.bookspot.crawler.libraries.prefix.jne.JneGoKrIsbnSearchUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.jne.JneGoKrUrlValidator;
 import com.bookspot.crawler.libraries.prefix.sen.SenGoKrSearchUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.sen.SenGoKrUrlValidator;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class IsbnUrlValidatorTest {
     JsoupCrawler crawler = new JsoupCrawler();
 
     @Test
     void 도서관_검색을_지원하지_않는_홈페이지() {
-        int expectedLibraryCnt = 21;
-        ValidatorTestRunner.run(
-                expectedLibraryCnt,
-                new IgnoreIsbnSearchUrlFormatter(),
-                new IgnoreUrlValidator()
+        assertEquals(
+                21,
+                ValidatorTestRunner.countRelatedLibrary(new IgnoreIsbnSearchUrlFormatter())
         );
     }
 
@@ -144,7 +145,7 @@ class IsbnUrlValidatorTest {
 
     @Test
     void test() {
-        ValidatorTestRunner.printRelatedLibrary(new IgnoreIsbnSearchUrlFormatter());
+        ValidatorTestRunner.countRelatedLibrary(new IgnoreIsbnSearchUrlFormatter());
     }
 
 }

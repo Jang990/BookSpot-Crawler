@@ -19,10 +19,11 @@ public class ValidatorTestRunner {
     static LibraryHomePagesFileReader reader = new LibraryHomePagesFileReader();
     static List<LibraryPageDto> csvData = reader.readLibrariesFromCsv("files/libraryHomePages_Prod.csv");
     static List<String> ignoreUrlList = IgnoreIsbnSearchUrlFormatter.WHITE_LIST;
+    static IgnoreIsbnSearchUrlFormatter ignoreFormatter = new IgnoreIsbnSearchUrlFormatter();
 
     static void run(int relatedLibraryCount, IsbnSearchUrlFormatter formatter, IsbnUrlValidator validator) {
         List<LibraryPageDto> relatedLibraries = csvData.stream()
-                .filter(dto -> !ignoreUrlList.contains(dto.homePage()))
+                .filter(dto -> !ignoreFormatter.supports(dto))
                 .filter(formatter::supports)
                 .toList();
         assertEquals(relatedLibraryCount, relatedLibraries.size());
@@ -51,13 +52,15 @@ public class ValidatorTestRunner {
         assertTrue(unsupportedLibraries.isEmpty());
     }
 
-    static void printRelatedLibrary(IsbnSearchUrlFormatter formatter) {
-        System.out.println("size = " + csvData.stream().filter(formatter::supports).count());
+    static long countRelatedLibrary(IsbnSearchUrlFormatter formatter) {
+        long size = csvData.stream().filter(formatter::supports).count();
+        System.out.println("size = " + size);
 
         csvData.stream()
                 .filter(formatter::supports)
                 .forEach(lib ->
                         System.out.println(lib.name() + " | " + lib.homePage() + " | " + formatter.format(lib))
                 );
+        return size;
     }
 }
