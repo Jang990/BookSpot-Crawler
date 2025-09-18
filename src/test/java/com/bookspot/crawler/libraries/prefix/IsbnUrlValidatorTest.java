@@ -13,6 +13,7 @@ import com.bookspot.crawler.libraries.prefix.djsch.DjschUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.donghae.DongHaeUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.gangnam.GangnamUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.gangnam.GangnamUrlValidator;
+import com.bookspot.crawler.libraries.prefix.geumcheon.GeumcheonUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.gne.GneUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.gne.GneUrlValidator;
 import com.bookspot.crawler.libraries.prefix.ignore.IgnoreIsbnSearchUrlFormatter;
@@ -130,6 +131,20 @@ class IsbnUrlValidatorTest {
                 new DjschUrlFormatter(),
                 new OnlyTrueValidator()
         );
+    }
+
+    @Test
+    void 금천도서관() {
+        ValidatorTestRunner.run(
+                4,
+                new GeumcheonUrlFormatter(),
+                new OnlyTrueValidator()
+        );
+    }
+
+    @Test
+    void test() {
+        ValidatorTestRunner.printRelatedLibrary(new GeumcheonUrlFormatter());
     }
 
 }
