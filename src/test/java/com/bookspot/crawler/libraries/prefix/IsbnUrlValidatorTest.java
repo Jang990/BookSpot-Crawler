@@ -229,7 +229,12 @@ class IsbnUrlValidatorTest {
         );
     }
 
-    /*@Test
-    void*/
+    @Test
+    void 구미시립도서관() {
+        assertEquals(
+          13,
+                ValidatorTestRunner.countRelatedLibrary(new GumiUrlFormatter())
+        );
+    }
 
 }
