@@ -269,8 +269,15 @@ class IsbnUrlValidatorTest {
         );
     }
 
-/*
+    @Test
+    void 전주도서관() {
+        assertEquals(
+                12,
+                ValidatorTestRunner.countRelatedLibrary(new JeonjuUrlFormatter())
+        );
+    }
 
+/*
     @Test
     void template() {
         ValidatorTestRunner.countRelatedLibrary(new GwangyangUrlFormatter());
