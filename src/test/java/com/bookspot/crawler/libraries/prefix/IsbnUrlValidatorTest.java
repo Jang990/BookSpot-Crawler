@@ -277,6 +277,38 @@ class IsbnUrlValidatorTest {
         );
     }
 
+    @Test
+    void 진주시립도서관() {
+        assertEquals(
+                7,
+                ValidatorTestRunner.countRelatedLibrary(new JinjuUrlFormatter())
+        );
+    }
+
+    @Test
+    void 울산중구_구립도서관() {
+        assertEquals(
+                10,
+                ValidatorTestRunner.countRelatedLibrary(new UlsanJungguUrlFormatter())
+        );
+    }
+
+    @Test
+    void 광주남구_도서관__ISBN검색_미지원() {
+        assertEquals(
+                3,
+                ValidatorTestRunner.countRelatedLibrary(new GwangjuNamguUrlFormatter())
+        );
+    }
+
+    @Test
+    void 남양주_도서관() {
+        assertEquals(
+                13,
+                ValidatorTestRunner.countRelatedLibrary(new NyjUrlFormatter())
+        );
+    }
+
 /*
     @Test
     void template() {
