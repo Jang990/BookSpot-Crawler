@@ -254,11 +254,19 @@ class IsbnUrlValidatorTest {
     }
 
     @Test
-    void 광산구도서관_ISBN검색_미지원() {
+    void 광양시립도서관() {
         assertEquals(
-                5,
-                ValidatorTestRunner.countRelatedLibrary(new GwangsanUrlFormatter())
+                6,
+                ValidatorTestRunner.countRelatedLibrary(new GwangyangUrlFormatter())
         );
     }
+
+/*
+
+    @Test
+    void template() {
+        ValidatorTestRunner.countRelatedLibrary(new GwangyangUrlFormatter());
+    }
+*/
 
 }
