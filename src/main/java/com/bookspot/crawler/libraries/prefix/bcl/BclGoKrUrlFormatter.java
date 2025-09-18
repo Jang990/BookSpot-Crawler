@@ -1,6 +1,7 @@
 package com.bookspot.crawler.libraries.prefix.bcl;
 
 import com.bookspot.crawler.libraries.file.LibraryPageDto;
+import com.bookspot.crawler.libraries.prefix.BasicUrlFormatElements;
 import com.bookspot.crawler.libraries.prefix.IsbnSearchUrlFormatter;
 
 
@@ -11,7 +12,7 @@ public class BclGoKrUrlFormatter implements IsbnSearchUrlFormatter {
 
     @Override
     public String[] getDomains() {
-        return IsbnSearchUrlFormatter.toMultiDomain(DOMAIN_1, DOMAIN_2);
+        return BasicUrlFormatElements.toMultiDomain(DOMAIN_1, DOMAIN_2);
     }
 
     @Override

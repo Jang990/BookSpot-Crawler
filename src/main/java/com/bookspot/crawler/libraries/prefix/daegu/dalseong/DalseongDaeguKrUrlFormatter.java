@@ -1,6 +1,6 @@
 package com.bookspot.crawler.libraries.prefix.daegu.dalseong;
 
-import com.bookspot.crawler.libraries.prefix.IsbnSearchUrlFormatter;
+import com.bookspot.crawler.libraries.prefix.BasicUrlFormatElements;
 import com.bookspot.crawler.libraries.prefix.UnsupportedSearchLibraryFormatter;
 
 public class DalseongDaeguKrUrlFormatter extends UnsupportedSearchLibraryFormatter {
@@ -8,6 +8,6 @@ public class DalseongDaeguKrUrlFormatter extends UnsupportedSearchLibraryFormatt
 
     @Override
     public String[] getDomains() {
-        return IsbnSearchUrlFormatter.toSingleDomain(DOMAIN);
+        return BasicUrlFormatElements.toSingleDomain(DOMAIN);
     }
 }

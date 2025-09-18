@@ -1,6 +1,7 @@
 package com.bookspot.crawler.libraries.prefix.sen;
 
 import com.bookspot.crawler.libraries.file.LibraryPageDto;
+import com.bookspot.crawler.libraries.prefix.BasicUrlFormatElements;
 import com.bookspot.crawler.libraries.prefix.IsbnSearchUrlFormatter;
 
 import java.net.URI;
@@ -12,7 +13,7 @@ public class SenGoKrSearchUrlFormatter implements IsbnSearchUrlFormatter {
 
     @Override
     public String[] getDomains() {
-        return IsbnSearchUrlFormatter.toSingleDomain(DOMAIN);
+        return BasicUrlFormatElements.toSingleDomain(DOMAIN);
     }
 
     @Override

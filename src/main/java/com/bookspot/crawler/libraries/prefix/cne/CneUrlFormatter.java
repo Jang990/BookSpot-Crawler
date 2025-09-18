@@ -1,6 +1,7 @@
 package com.bookspot.crawler.libraries.prefix.cne;
 
 import com.bookspot.crawler.libraries.file.LibraryPageDto;
+import com.bookspot.crawler.libraries.prefix.BasicUrlFormatElements;
 import com.bookspot.crawler.libraries.prefix.IsbnSearchUrlFormatter;
 
 public class CneUrlFormatter implements IsbnSearchUrlFormatter {
@@ -8,7 +9,7 @@ public class CneUrlFormatter implements IsbnSearchUrlFormatter {
 
     @Override
     public String[] getDomains() {
-        return IsbnSearchUrlFormatter.toSingleDomain(DOMAIN);
+        return BasicUrlFormatElements.toSingleDomain(DOMAIN);
     }
 
     @Override

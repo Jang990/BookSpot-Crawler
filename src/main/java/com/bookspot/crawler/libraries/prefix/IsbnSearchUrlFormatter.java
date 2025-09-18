@@ -4,22 +4,7 @@ import com.bookspot.crawler.libraries.file.LibraryPageDto;
 
 import java.util.Map;
 
-public interface IsbnSearchUrlFormatter {
-    static String[] toSingleDomain(String domain) {
-        return new String[]{domain};
-    }
-
-    static String[] toMultiDomain(String... domains) {
-        return domains;
-    }
-
-
-    String[] getDomains();
-
-    default Map<String, String> getLibraryNameAndCode() {
-        return null;
-    }
-
+public interface IsbnSearchUrlFormatter extends BasicUrlFormatElements {
 
     default boolean supports(LibraryPageDto dto) {
         String[] domains = getDomains();

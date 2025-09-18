@@ -1,6 +1,7 @@
 package com.bookspot.crawler.libraries.prefix.gne;
 
 import com.bookspot.crawler.libraries.file.LibraryPageDto;
+import com.bookspot.crawler.libraries.prefix.BasicUrlFormatElements;
 import com.bookspot.crawler.libraries.prefix.IsbnSearchUrlFormatter;
 
 import java.util.Map;
@@ -44,7 +45,7 @@ public class GneUrlFormatter implements IsbnSearchUrlFormatter {
 
     @Override
     public String[] getDomains() {
-        return IsbnSearchUrlFormatter.toSingleDomain(DOMAIN);
+        return BasicUrlFormatElements.toSingleDomain(DOMAIN);
     }
 
     @Override
