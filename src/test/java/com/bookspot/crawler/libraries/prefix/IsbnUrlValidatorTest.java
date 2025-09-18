@@ -237,4 +237,12 @@ class IsbnUrlValidatorTest {
         );
     }
 
+    @Test
+    void 군산시립도서관() {
+        assertEquals(
+                6,
+                ValidatorTestRunner.countRelatedLibrary(new GunsanUrlFormatter())
+        );
+    }
+
 }
