@@ -197,4 +197,9 @@ class IsbnUrlValidatorTest {
         ValidatorTestRunner.countRelatedLibrary(new GangseoUrlFormatter());
     }
 
+    @Test
+    void 경산_도서관_ISBN검색_도서관_선택_불가능() {
+        ValidatorTestRunner.countRelatedLibrary(new GbgsUrlFormatter());
+    }
+
 }
