@@ -199,7 +199,11 @@ class IsbnUrlValidatorTest {
 
     @Test
     void 경산_도서관_ISBN검색_도서관_선택_불가능() {
-        ValidatorTestRunner.countRelatedLibrary(new GbgsUrlFormatter());
+        assertEquals(
+                2,
+                ValidatorTestRunner.countRelatedLibrary(new GbgsUrlFormatter())
+        );
+
     }
 
 }
