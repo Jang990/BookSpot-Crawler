@@ -9,12 +9,14 @@ import com.bookspot.crawler.libraries.prefix.cne.CneUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.cne.CneUrlValidator;
 import com.bookspot.crawler.libraries.prefix.daegu.dalseong.DalseongDaeguKrUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.daegu.dalseong.DalseongDaeguKrUrlValidator;
+import com.bookspot.crawler.libraries.prefix.donghae.DongHaeUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.gangnam.GangnamUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.gangnam.GangnamUrlValidator;
 import com.bookspot.crawler.libraries.prefix.gne.GneUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.gne.GneUrlValidator;
 import com.bookspot.crawler.libraries.prefix.ignore.IgnoreIsbnSearchUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.ignore.IgnoreUrlValidator;
+import com.bookspot.crawler.libraries.prefix.ignore.OnlyTrueValidator;
 import com.bookspot.crawler.libraries.prefix.jne.JneGoKrIsbnSearchUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.jne.JneGoKrUrlValidator;
 import com.bookspot.crawler.libraries.prefix.sen.SenGoKrSearchUrlFormatter;
@@ -112,8 +114,17 @@ class IsbnUrlValidatorTest {
     }
 
     @Test
+    void 동해도서관() {
+        ValidatorTestRunner.run(
+                6,
+                new DongHaeUrlFormatter(),
+                new OnlyTrueValidator()
+        );
+    }
+
+    @Test
     void test() {
-        ValidatorTestRunner.printRelatedLibrary(new GangnamUrlFormatter());
+        ValidatorTestRunner.printRelatedLibrary(new DongHaeUrlFormatter());
     }
 
 }
