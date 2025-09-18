@@ -22,6 +22,7 @@ import com.bookspot.crawler.libraries.prefix.ignore.OnlyTrueValidator;
 import com.bookspot.crawler.libraries.prefix.jne.JneGoKrIsbnSearchUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.jne.JneGoKrUrlValidator;
 import com.bookspot.crawler.libraries.prefix.other.ChungBukFormatter;
+import com.bookspot.crawler.libraries.prefix.other.EunpyeongFormatter;
 import com.bookspot.crawler.libraries.prefix.sen.SenGoKrSearchUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.sen.SenGoKrUrlValidator;
 import org.junit.jupiter.api.Assertions;
@@ -154,8 +155,16 @@ class IsbnUrlValidatorTest {
     }
 
     @Test
+    void 은평구_ISBN검색은_지원하나_CSR방식() {
+        assertEquals(
+                18,
+                ValidatorTestRunner.countRelatedLibrary(new EunpyeongFormatter())
+        );
+    }
+
+    @Test
     void test() {
-        ValidatorTestRunner.countRelatedLibrary(new ChungBukFormatter());
+
     }
 
 }
