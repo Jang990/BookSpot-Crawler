@@ -30,7 +30,7 @@ class IsbnUrlValidatorTest {
 
     @Test
     void 도서관_검색을_지원하지_않는_홈페이지() {
-        int expectedLibraryCnt = 20;
+        int expectedLibraryCnt = 21;
         ValidatorTestRunner.run(
                 expectedLibraryCnt,
                 new IgnoreIsbnSearchUrlFormatter(),
@@ -109,7 +109,7 @@ class IsbnUrlValidatorTest {
     @Test
     void 강남도서관_일부_검색_미지원() {
         ValidatorTestRunner.run(
-                29,
+                26,
                 new GangnamUrlFormatter(),
                 new GangnamUrlValidator(crawler)
         );
@@ -144,7 +144,7 @@ class IsbnUrlValidatorTest {
 
     @Test
     void test() {
-        ValidatorTestRunner.printRelatedLibrary(new GeumcheonUrlFormatter());
+        ValidatorTestRunner.printRelatedLibrary(new IgnoreIsbnSearchUrlFormatter());
     }
 
 }

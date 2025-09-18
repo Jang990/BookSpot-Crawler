@@ -6,9 +6,12 @@ import com.bookspot.crawler.libraries.prefix.IsbnSearchUrlFormatter;
 import java.util.List;
 
 public class IgnoreIsbnSearchUrlFormatter implements IsbnSearchUrlFormatter {
-    private static List<String> WHITE_LIST = List.of(
+    public static List<String> WHITE_LIST = List.of(
             "agjlib.gangnam.go.kr",
-            "cafe.daum.net/ddmbook"
+            "cafe.daum.net/ddmbook",
+            "http://iw1lib.gangnam.go.kr/", // 일원1동작은도서관
+            "http://suseolib.gangnam.go.kr/", // 수서동작은도서관
+            "https://library.gangnam.go.kr/" // 일원2동문고
     );
 
     @Override
@@ -23,12 +26,7 @@ public class IgnoreIsbnSearchUrlFormatter implements IsbnSearchUrlFormatter {
                 || dto.homePage().equals("-"))
             return true;
 
-        for (String url : WHITE_LIST) {
-            if(dto.homePage().contains(url))
-                return true;
-        }
-
-        return false;
+        return WHITE_LIST.contains(dto.homePage());
     }
 
     @Override

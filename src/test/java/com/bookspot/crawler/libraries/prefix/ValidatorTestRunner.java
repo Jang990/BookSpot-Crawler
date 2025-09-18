@@ -2,6 +2,7 @@ package com.bookspot.crawler.libraries.prefix;
 
 import com.bookspot.crawler.libraries.file.LibraryHomePagesFileReader;
 import com.bookspot.crawler.libraries.file.LibraryPageDto;
+import com.bookspot.crawler.libraries.prefix.ignore.IgnoreIsbnSearchUrlFormatter;
 
 import java.io.IOException;
 import java.util.List;
@@ -17,14 +18,17 @@ public class ValidatorTestRunner {
 
     static LibraryHomePagesFileReader reader = new LibraryHomePagesFileReader();
     static List<LibraryPageDto> csvData = reader.readLibrariesFromCsv("files/libraryHomePages_Prod.csv");
+    static List<String> ignoreUrlList = IgnoreIsbnSearchUrlFormatter.WHITE_LIST;
 
     static void run(int relatedLibraryCount, IsbnSearchUrlFormatter formatter, IsbnUrlValidator validator) {
         List<LibraryPageDto> relatedLibraries = csvData.stream()
+                .filter(dto -> !ignoreUrlList.contains(dto.homePage()))
                 .filter(formatter::supports)
                 .toList();
         assertEquals(relatedLibraryCount, relatedLibraries.size());
 
         List<LibraryPageDto> unsupportedLibraries = relatedLibraries.stream()
+                .filter(dto -> !ignoreUrlList.contains(dto.homePage()))
                 .filter(dto -> {
                     try {
                         String code = formatter.getLibraryCode(dto);

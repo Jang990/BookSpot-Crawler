@@ -26,6 +26,12 @@ public interface IsbnSearchUrlFormatter extends BasicUrlFormatElements {
     }
 
     default String format(LibraryPageDto dto) {
-        return null;
+        if(getTemplate() == null)
+            return null;
+
+        if(getTemplate().contains("%s"))
+            return getTemplate().formatted(getLibraryCode(dto));
+        else
+            return getTemplate();
     }
 }

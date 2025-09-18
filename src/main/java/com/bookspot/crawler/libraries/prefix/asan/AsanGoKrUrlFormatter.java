@@ -29,6 +29,11 @@ public class AsanGoKrUrlFormatter implements IsbnSearchUrlFormatter {
     }
 
     @Override
+    public String getTemplate() {
+        return COMMON_SEARCH_PAGE;
+    }
+
+    @Override
     public String format(LibraryPageDto dto) {
         return COMMON_SEARCH_PAGE.formatted(getLibraryCode(dto));
     }

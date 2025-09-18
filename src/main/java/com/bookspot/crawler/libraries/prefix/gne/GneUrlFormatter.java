@@ -49,11 +49,6 @@ public class GneUrlFormatter implements IsbnSearchUrlFormatter {
     }
 
     @Override
-    public String getLibraryCode(LibraryPageDto dto) {
-        return null;
-    }
-
-    @Override
     public String format(LibraryPageDto dto) {
         String searchPageUrl = libNameAndSearchPageUrl.get(dto.name());
         if(searchPageUrl == null)
