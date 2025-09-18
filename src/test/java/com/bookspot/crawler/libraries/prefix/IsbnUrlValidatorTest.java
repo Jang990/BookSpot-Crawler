@@ -90,7 +90,7 @@ class IsbnUrlValidatorTest {
     }
 
     @Test
-    void 경상남도_ISBN검색_미지원() {
+    void 경상남도_교육청_ISBN검색_미지원() {
         ValidatorTestRunner.run(
                 27,
                 new GneUrlFormatter(),
@@ -210,6 +210,14 @@ class IsbnUrlValidatorTest {
         assertEquals(
                 6,
                 ValidatorTestRunner.countRelatedLibrary(new GenUrlFormatter())
+        );
+    }
+
+    @Test
+    void 김해시_ISBN검색이_있으나_검색어_없으면_동작안함() {
+        assertEquals(
+                45,
+                ValidatorTestRunner.countRelatedLibrary(new GimhaeUrlFormatter())
         );
     }
 
