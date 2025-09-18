@@ -253,4 +253,12 @@ class IsbnUrlValidatorTest {
         );
     }
 
+    @Test
+    void 광산구도서관_ISBN검색_미지원() {
+        assertEquals(
+                5,
+                ValidatorTestRunner.countRelatedLibrary(new GwangsanUrlFormatter())
+        );
+    }
+
 }
