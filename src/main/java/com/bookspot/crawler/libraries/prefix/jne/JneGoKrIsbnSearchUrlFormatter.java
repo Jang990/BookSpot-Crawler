@@ -6,7 +6,7 @@ import com.bookspot.crawler.libraries.prefix.IsbnSearchUrlFormatter;
 import java.util.Map;
 
 public class JneGoKrIsbnSearchUrlFormatter implements IsbnSearchUrlFormatter {
-    private static final String SUPPORTED_DOMAIN = "jne.go.kr";
+    private static final String DOMAIN = "jne.go.kr";
     private static final String COMMON_ISBN_PREFIX_FORMAT = "https://bglib.jne.go.kr/book/search_book/search.es?mid=a90101010100&searchKind=%s&vSrchText0=";
     public static final Map<String, String> homePageAndCode = Map.ofEntries(
             Map.entry("http://bglib.jne.go.kr/", "00146013"), // 벌교
@@ -33,8 +33,8 @@ public class JneGoKrIsbnSearchUrlFormatter implements IsbnSearchUrlFormatter {
     );
 
     @Override
-    public boolean supports(LibraryPageDto dto) {
-        return dto.homePage().contains(SUPPORTED_DOMAIN);
+    public String[] getDomains() {
+        return IsbnSearchUrlFormatter.toSingleDomain(DOMAIN);
     }
 
     @Override

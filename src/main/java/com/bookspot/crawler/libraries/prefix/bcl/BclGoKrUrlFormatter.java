@@ -10,9 +10,8 @@ public class BclGoKrUrlFormatter implements IsbnSearchUrlFormatter {
     private static final String COMMON_SEARCH_PAGE = "https://alpasq.bcl.go.kr/search/keyword/";
 
     @Override
-    public boolean supports(LibraryPageDto dto) {
-        return dto.homePage().contains(DOMAIN_1)
-                || dto.homePage().contains(DOMAIN_2);
+    public String[] getDomains() {
+        return IsbnSearchUrlFormatter.toMultiDomain(DOMAIN_1, DOMAIN_2);
     }
 
     @Override

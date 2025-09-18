@@ -7,11 +7,12 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 public class SenGoKrSearchUrlFormatter implements IsbnSearchUrlFormatter {
-    private static final String SUPPORTED_DOMAIN = "sen.go.kr";
+    private static final String DOMAIN = "sen.go.kr";
     private static final String SUFFIX = "/intro/search/index.do?menu_idx=4&editMode=normal&search_text=";
 
-    public boolean supports(LibraryPageDto dto) {
-        return dto.homePage().contains(SUPPORTED_DOMAIN);
+    @Override
+    public String[] getDomains() {
+        return IsbnSearchUrlFormatter.toSingleDomain(DOMAIN);
     }
 
     @Override

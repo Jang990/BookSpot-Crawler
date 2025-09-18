@@ -12,6 +12,11 @@ public class IgnoreIsbnSearchUrlFormatter implements IsbnSearchUrlFormatter {
     );
 
     @Override
+    public String[] getDomains() {
+        return null;
+    }
+
+    @Override
     public boolean supports(LibraryPageDto dto) {
         if(dto.homePage() == null
                 || dto.homePage().equals("")

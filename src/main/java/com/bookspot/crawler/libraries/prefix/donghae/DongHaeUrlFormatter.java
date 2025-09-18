@@ -18,8 +18,8 @@ public class DongHaeUrlFormatter implements IsbnSearchUrlFormatter {
     );
 
     @Override
-    public boolean supports(LibraryPageDto dto) {
-        return dto.homePage().contains(DOMAIN);
+    public String[] getDomains() {
+        return IsbnSearchUrlFormatter.toSingleDomain(DOMAIN);
     }
 
     @Override

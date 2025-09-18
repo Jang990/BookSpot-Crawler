@@ -9,6 +9,7 @@ import com.bookspot.crawler.libraries.prefix.cne.CneUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.cne.CneUrlValidator;
 import com.bookspot.crawler.libraries.prefix.daegu.dalseong.DalseongDaeguKrUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.daegu.dalseong.DalseongDaeguKrUrlValidator;
+import com.bookspot.crawler.libraries.prefix.djsch.DjschUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.donghae.DongHaeUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.gangnam.GangnamUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.gangnam.GangnamUrlValidator;
@@ -123,8 +124,12 @@ class IsbnUrlValidatorTest {
     }
 
     @Test
-    void test() {
-        ValidatorTestRunner.printRelatedLibrary(new DongHaeUrlFormatter());
+    void 대전학생교육_ISBN검색_미지원() {
+        ValidatorTestRunner.run(
+                2,
+                new DjschUrlFormatter(),
+                new OnlyTrueValidator()
+        );
     }
 
 }

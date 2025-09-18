@@ -6,7 +6,7 @@ import com.bookspot.crawler.libraries.prefix.IsbnSearchUrlFormatter;
 import java.util.Map;
 
 public class GneUrlFormatter implements IsbnSearchUrlFormatter {
-    private static final String DOAMIN = "gne.go.kr";
+    private static final String DOMAIN = "gne.go.kr";
     protected static final Map<String, String> libNameAndSearchPageUrl = Map.ofEntries(
             Map.entry("경상남도교육청 창원도서관", "https://cwlib.gne.go.kr/book/search.es?mid=a20301010000"),
             Map.entry("경상남도교육청 거창도서관", "https://gclib.gne.go.kr/book/search.es?mid=b90101000000"),
@@ -43,8 +43,8 @@ public class GneUrlFormatter implements IsbnSearchUrlFormatter {
      */
 
     @Override
-    public boolean supports(LibraryPageDto dto) {
-        return dto.homePage().contains(DOAMIN);
+    public String[] getDomains() {
+        return IsbnSearchUrlFormatter.toSingleDomain(DOMAIN);
     }
 
     @Override

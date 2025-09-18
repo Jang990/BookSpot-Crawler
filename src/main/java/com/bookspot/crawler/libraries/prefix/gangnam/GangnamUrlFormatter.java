@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public class GangnamUrlFormatter implements IsbnSearchUrlFormatter {
-    private static final String DOAMIN = "gangnam.go.kr";
+    private static final String DOMAIN = "gangnam.go.kr";
     private static final List<String> unsupportedSearchLibraryNames = List.of(
             "http://iw1lib.gangnam.go.kr/", // 일원1동작은도서관
             "http://suseolib.gangnam.go.kr/", // 수서동작은도서관
@@ -44,8 +44,8 @@ public class GangnamUrlFormatter implements IsbnSearchUrlFormatter {
     );
 
     @Override
-    public boolean supports(LibraryPageDto dto) {
-        return dto.homePage().contains(DOAMIN);
+    public String[] getDomains() {
+        return IsbnSearchUrlFormatter.toSingleDomain(DOMAIN);
     }
 
     @Override
