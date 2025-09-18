@@ -21,6 +21,7 @@ import com.bookspot.crawler.libraries.prefix.ignore.IgnoreUrlValidator;
 import com.bookspot.crawler.libraries.prefix.ignore.OnlyTrueValidator;
 import com.bookspot.crawler.libraries.prefix.jne.JneGoKrIsbnSearchUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.jne.JneGoKrUrlValidator;
+import com.bookspot.crawler.libraries.prefix.other.ChungBukFormatter;
 import com.bookspot.crawler.libraries.prefix.sen.SenGoKrSearchUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.sen.SenGoKrUrlValidator;
 import org.junit.jupiter.api.Assertions;
@@ -144,8 +145,17 @@ class IsbnUrlValidatorTest {
     }
 
     @Test
+    void 충청북도_ISBN검색_미지원() {
+        ValidatorTestRunner.run(
+                15,
+                new ChungBukFormatter(),
+                new OnlyTrueValidator()
+        );
+    }
+
+    @Test
     void test() {
-        ValidatorTestRunner.countRelatedLibrary(new IgnoreIsbnSearchUrlFormatter());
+        ValidatorTestRunner.countRelatedLibrary(new ChungBukFormatter());
     }
 
 }
