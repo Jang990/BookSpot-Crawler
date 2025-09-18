@@ -221,4 +221,15 @@ class IsbnUrlValidatorTest {
         );
     }
 
+    @Test
+    void 다산도서관() {
+        assertEquals(
+                1,
+                ValidatorTestRunner.countRelatedLibrary(new GoryeongUrlFormatter())
+        );
+    }
+
+    /*@Test
+    void*/
+
 }
