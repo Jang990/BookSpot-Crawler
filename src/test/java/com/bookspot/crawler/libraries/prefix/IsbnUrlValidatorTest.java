@@ -261,6 +261,14 @@ class IsbnUrlValidatorTest {
         );
     }
 
+    @Test
+    void 제주도서관_DB점검중() {
+        assertEquals(
+                15,
+                ValidatorTestRunner.countRelatedLibrary(new JejuUrlFormatter())
+        );
+    }
+
 /*
 
     @Test
