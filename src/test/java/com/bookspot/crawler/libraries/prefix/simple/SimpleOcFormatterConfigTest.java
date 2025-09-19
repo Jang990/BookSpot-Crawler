@@ -115,6 +115,31 @@ class SimpleOcFormatterConfigTest {
     }
 
     @Test
+    void 과천시정보과학도서관_단일() {
+        assertEquals(1, count(config.gclibUrlFormatter()));
+    }
+
+    @Test
+    void 강동구() {
+        assertEquals(8, count(config.gdlibraryUrlFormatter()));
+    }
+
+    @Test
+    void 김포() {
+        assertEquals(11, count(config.gimpoUrlFormatter()));
+    }
+
+    @Test
+    void 구리시립() {
+        assertEquals(3, count(config.gurilibUrlFormatter()));
+    }
+
+    @Test
+    void 서울_광진() {
+        assertEquals(8, count(config.gwangjinlibUrlFormatter()));
+    }
+
+    @Test
     void sample() {
         count(config.sampleUrlFormatter());
     }

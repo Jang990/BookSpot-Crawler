@@ -367,9 +367,109 @@ public class SimpleOcFormatterConfig {
     }
 
     @Bean
+    public IsbnSearchUrlFormatter gclibUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "gclib.go.kr",
+                "https://www.gclib.go.kr/lib/menu/10008/program/30001/searchResultList.do?searchType=SIMPLE&preSearchKeyword=9788936434120&searchDisplay=30&searchManageCodeArr=MA&searchKeyword=",
+                Map.of("과천시정보과학도서관", "MA")
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter gdlibraryUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "gdlibrary.or.kr",
+                "https://www.gdlibrary.or.kr/portal/menu/38/book/search/collection?searchType=normal&smart_manage_code=&manage_code=%s&searchInput=",
+                Map.ofEntries(
+                        Map.entry("강동구립암사도서관", "MC"),
+                        Map.entry("강동구립천호도서관", "MD"),
+                        Map.entry("강동구립강일도서관", "MB"),
+                        Map.entry("강동구립성내도서관", "MA"),
+                        Map.entry("강동숲속도서관", "MF"),
+                        Map.entry("강동중앙도서관", "MH"),
+                        Map.entry("강동구립둔촌도서관", "ME"),
+                        Map.entry("강동구립해공도서관", "BR")
+                )
+
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter gimpoUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "gimpo.go.kr",
+                "https://www.gimpo.go.kr/janggi/bookSearchList.do?key=2780&rep=1&option=0&pageUnit=30&manageCode=%s&searchKrwd=",
+                Map.ofEntries(
+                        Map.entry("구래작은도서관", "GR"),
+                        Map.entry("누리봄작은도서관", "BR"),
+                        Map.entry("대곶작은도서관", "DK"),
+                        Map.entry("통진도서관", "TJ"),
+                        Map.entry("고촌도서관", "GC"),
+                        Map.entry("양곡도서관", "YG"),
+                        Map.entry("장기도서관", "JG"),
+                        Map.entry("풍무도서관", "PM"),
+                        Map.entry("마산도서관", "MS"),
+                        Map.entry("모담도서관", "MD")
+                ),
+                List.of("중봉도서관") // TODO: 2025년까지 휴관
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter gurilibUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "gurilib.go.kr",
+                "https://www.gurilib.go.kr/inlib/menu/10018/program/30001/searchResultList.do?searchType=SIMPLE&searchPubFormCode=ALL&searchDisplay=30&searchManageCodeArr=%s&searchKeyword=",
+                Map.ofEntries(
+                        Map.entry("구리시립 교문방정환도서관", "BR"),
+                        Map.entry("구리시립 인창도서관", "MA"),
+                        Map.entry("구리시립 토평도서관", "TP")
+                )
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter gwangjinlibUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "gwangjinlib.seoul.kr",
+                "https://www.gwangjinlib.seoul.kr/gjinfo/menu/10037/program/30011/plusSearchResultList.do?searchType=DETAIL&searchCategory=ALL&searchKey5=ISBN&searchRecordCount=30&searchLibrary=%s&searchKeyword5=",
+                Map.ofEntries(
+                        Map.entry("광진정보도서관", "MA"),
+                        Map.entry("자양한강도서관", "MF"),
+                        Map.entry("구의제3동도서관", "MB"),
+                        Map.entry("군자동도서관", "MG"),
+                        Map.entry("아차산숲속도서관", "MH"),
+                        Map.entry("자양제4동도서관", "MC"),
+                        Map.entry("중곡문화체육센터도서관", "MD"),
+                        Map.entry("광진어린이영어도서관", "MI"),
+                        Map.entry("자양한강 스마트도서관", "NA"),
+                        Map.entry("군자역 스마트도서관", "NB"),
+                        Map.entry("구의역 스마트도서관", "ND"),
+                        Map.entry("광진구민체육센터 스마트도서관", "NE")
+                )
+                /*
+                <select name="searchLibrary" id="searchLibrary" class="selAuto" onchange="javascript:searchRoomContr();">
+
+
+
+
+
+
+
+
+
+
+
+
+											</select>
+                 */
+        );
+    }
+
+    @Bean
     public IsbnSearchUrlFormatter sampleUrlFormatter() {
         return new SimpleUrlFormatter(
-                "gclib.go.kr"
+                "gwangjinlib.seoul.kr"
         );
     }
 

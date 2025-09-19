@@ -9,7 +9,7 @@ class LibraryCodesCrawlerTest {
     @Test
     void test() {
         crawler.crawlLi(
-                "https://www.gbelib.kr/ad/intro/search/index.do?menu_idx=8&search_type=L_ISBN&search_text=9788936434120&libraryCodes=00147010&sortField=DISP01&rowCount=30",
+                "https://www.gimpo.go.kr/janggi/bookSearchList.do?key=2780&rep=1&option=0&pageUnit=30&manageCode=BR&searchKrwd=",
                 "#libraryList > div:nth-child(2) > ul > li"
         );
     }
