@@ -9,8 +9,8 @@ class LibraryCodesCrawlerTest {
     @Test
     void test() {
         crawler.crawlLi(
-                "https://www.gimpo.go.kr/janggi/bookSearchList.do?key=2780&rep=1&option=0&pageUnit=30&manageCode=BR&searchKrwd=",
-                "#libraryList > div:nth-child(2) > ul > li"
+                "https://www.unilib.dobong.kr/site/search/search00.do?cmd_name=bookandnonbooksearch&search_type=detail&manage_code=MA%2CMB%2CME%2CMG%2CMJ%2CMF%2CMH%2CSA%2CMD%2CSL%2CSM%2CSN%2CSO%2CSP%2CSJ%2CSK%2CSQ%2CSR%2CSS%2CST%2CSU%2CSG%2CSC&search_txt=9788936434120",
+                "#ul_small_lib2 > li"
         );
     }
 

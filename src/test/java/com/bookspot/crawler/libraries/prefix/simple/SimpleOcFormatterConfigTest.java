@@ -140,6 +140,11 @@ class SimpleOcFormatterConfigTest {
     }
 
     @Test
+    void 도봉구() {
+        assertEquals(27, count(config.dobongUrlFormatter()));
+    }
+
+    @Test
     void sample() {
         count(config.sampleUrlFormatter());
     }

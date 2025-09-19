@@ -447,29 +447,55 @@ public class SimpleOcFormatterConfig {
                         Map.entry("구의역 스마트도서관", "ND"),
                         Map.entry("광진구민체육센터 스마트도서관", "NE")
                 )
-                /*
-                <select name="searchLibrary" id="searchLibrary" class="selAuto" onchange="javascript:searchRoomContr();">
+        );
+    }
 
+    @Bean
+    public IsbnSearchUrlFormatter dobongUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "unilib.dobong.kr",
+                "https://www.unilib.dobong.kr/site/search/search00.do?cmd_name=bookandnonbooksearch&search_type=detail&manage_code=%s&search_txt=",
+                Map.ofEntries(
+                        Map.entry("도봉문화정보도서관", "MA"),
+                        Map.entry("도봉아이나라도서관", "MB"),
+                        Map.entry("도봉기적의도서관", "ME"),
+                        Map.entry("쌍문채움도서관", "MG"),
+                        Map.entry("원당마을한옥도서관", "MJ"),
+                        Map.entry("둘리도서관", "MF"),
+                        Map.entry("김근태기념도서관", "MH"),
 
-
-
-
-
-
-
-
-
-
-
-											</select>
-                 */
+                        Map.entry("도봉구청 행복작은도서관", "SA"),
+                        Map.entry("도봉구립무수골도서관", "MD"),
+                        Map.entry("김수영문학도서관", "SL"),
+                        Map.entry("쌍문1동 공립 작은도서관", "SM"),
+                        Map.entry("쌍문2동 공립 작은도서관", "SN"),
+                        Map.entry("쌍문3동 공립 작은도서관", "SO"),
+                        Map.entry("쌍문4동 공립 작은도서관", "SP"),
+                        Map.entry("방학1동 공립 작은도서관", "SJ"),
+                        Map.entry("방학2동 공립 작은도서관", "SK"),
+                        Map.entry("창1동 공립 작은도서관", "SQ"),
+                        Map.entry("창2동 공립 작은도서관", "SR"),
+                        Map.entry("창3동 공립 작은도서관", "SS"),
+                        Map.entry("창4동 공립 작은도서관", "ST"),
+                        Map.entry("창5동 공립 작은도서관", "SU"),
+                        Map.entry("도봉1동 공립 작은도서관", "SG"),
+                        Map.entry("북서울중학교", "SC")
+                ),
+                List.of(
+                        "방학동육아종합지원센터", // TODO: 있긴하다. https://doccic.go.kr/rental/center_01_book.php
+                        "창동육아종합지원센터", // TODO: 있긴하다. https://doccic.go.kr/rental/center_02_book.php?pno=&mode=&sort=oi.regdate&sch_field=itemname&pagenumber=1&sch_age=&sch_bcode=&sch_value=9788936434120&listcnt=8
+                        "도봉구립학마을도서관", // TODO: ~26년 2월까지 휴관
+                        "지혜의등대 작은도서관", // TODO: 25.05~?? 휴관
+                        "도봉2동 공립 작은도서관", // 안보임...
+                        "방학3동 공립 작은도서관" // 안보임...
+                )
         );
     }
 
     @Bean
     public IsbnSearchUrlFormatter sampleUrlFormatter() {
         return new SimpleUrlFormatter(
-                "gwangjinlib.seoul.kr"
+                "unilib.dobong.kr"
         );
     }
 
