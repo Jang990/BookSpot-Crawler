@@ -37,8 +37,13 @@ public class CrawlingResult {
         return element.text();
     }
 
+    public int countElements(String cssQuery) {
+        return response.select(cssQuery).size();
+    }
+
     private Element findFirstElement(String cssQuery) {
         Element element = response.selectFirst(cssQuery);
+
         if(element == null)
             throw new ElementNotFoundException();
         return element;
