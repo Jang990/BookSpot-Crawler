@@ -21,7 +21,7 @@ public class ValidatorTestRunner {
     static List<String> ignoreUrlList = IgnoreIsbnSearchUrlFormatter.WHITE_LIST;
     static IgnoreIsbnSearchUrlFormatter ignoreFormatter = new IgnoreIsbnSearchUrlFormatter();
 
-    static void run(int relatedLibraryCount, IsbnSearchUrlFormatter formatter, IsbnUrlValidator validator) {
+    public static void run(int relatedLibraryCount, IsbnSearchUrlFormatter formatter, IsbnUrlValidator validator) {
         List<LibraryPageDto> relatedLibraries = csvData.stream()
                 .filter(dto -> !ignoreFormatter.supports(dto))
                 .filter(formatter::supports)
@@ -52,7 +52,7 @@ public class ValidatorTestRunner {
         assertTrue(unsupportedLibraries.isEmpty());
     }
 
-    static long countRelatedLibrary(IsbnSearchUrlFormatter formatter) {
+    public static long countRelatedLibrary(IsbnSearchUrlFormatter formatter) {
         long size = csvData.stream().filter(formatter::supports).count();
         System.out.println("size = " + size);
 
