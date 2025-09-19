@@ -167,98 +167,11 @@ public class SimpleOcFormatterConfig {
     }
 
     @Bean
-    public IsbnSearchUrlFormatter daeguDalUrlFormatter() {
-        return new SimpleUrlFormatter(
-                "daegu.go.kr/dalseolib",
-                "https://library.daegu.go.kr/dalseolib/intro/search/index.do?menu_idx=9&viewPage=1&booktype=BOOKANDNONBOOK&libraryCodes=%s&isbn=",
-                Map.ofEntries(
-                        Map.entry("달서구립성서도서관", "BU"),
-                        Map.entry("달서구립어린이도서관", "BV"),
-                        Map.entry("달서구립도원도서관", "BW"),
-                        Map.entry("달서구립본리도서관", "BX"),
-                        Map.entry("달서구립가족문화도서관", "BY"),
-                        Map.entry("달서구립달서영어도서관", "BZ"),
-                        Map.entry("이곡2동 작은도서관", "FA"),
-                        Map.entry("용산1동 작은도서관", "FB"),
-                        Map.entry("장기동 작은도서관", "FC"),
-                        Map.entry("죽전동 작은도서관", "FD"),
-                        Map.entry("행정정보문고센터", "FX"),
-                        Map.entry("학산 작은도서관", "GK"),
-
-                        // 수성구립
-                        Map.entry("수성구립책숲길도서관", "BJ"),
-                        Map.entry("수성구립물망이도서관", "BK"),
-                        Map.entry("수성구립범어도서관", "BD")
-                )
-        );
-    }
-
-    @Bean
-    public IsbnSearchUrlFormatter daeguBeomeoUrlFormatter() {
-        return new SimpleUrlFormatter(
-                "daegu.go.kr/beomeo",
-                "https://library.daegu.go.kr/beomeo/intro/search/index.do?menu_idx=9&viewPage=1&booktype=BOOKANDNONBOOK&libraryCodes=%s&isbn=",
-                Map.ofEntries(
-                        // 수성구립
-                        Map.entry("수성구립책숲길도서관", "BJ"),
-                        Map.entry("수성구립물망이도서관", "BK"),
-                        Map.entry("수성구립범어도서관", "BD")
-                )
-        );
-    }
-
-    @Bean
-    public IsbnSearchUrlFormatter daeguOthersUrlFormatter() {
-        return new IsbnSearchUrlFormatter() {
-            @Override
-            public String[] getDomains() {
-                return BasicUrlFormatElements.toMultiDomain(
-                        "daegu.go.kr/228",
-                        "daegu.go.kr/bukbu",
-                        "daegu.go.kr/duryu",
-                        "daegu.go.kr/nambu",
-                        "daegu.go.kr/seobu"
-                );
-            }
-
-            @Override
-            public String format(LibraryPageDto dto) {
-                if (dto.name().equals("2.28도서관"))
-                    return "https://library.daegu.go.kr/228lib/intro/search/index.do?menu_idx=125&viewPage=1&booktype=BOOKANDNONBOOK&isbn=";
-
-                Matcher m = Pattern.compile("kr/([^/]+)").matcher(dto.homePage());
-                if (m.find())
-                    return "https://library.daegu.go.kr/%s/intro/search/index.do?menu_idx=13&viewPage=1&booktype=BOOKANDNONBOOK&isbn="
-                            .formatted(m.group(1));
-                throw new IllegalArgumentException(dto.toString());
-            }
-        };
-    }
-
-    @Bean
     public IsbnSearchUrlFormatter sampleUrlFormatter() {
         return new SimpleUrlFormatter(
                 ""
         );
     }
-
-
-    /*
-    daegu.go.kr/bukdh
-    daegu.go.kr/bukgs
-    daegu.go.kr/buktj
-    daegu.go.kr/dalseong
-    daegu.go.kr/dalseongchild
-    daegu.go.kr/dongbu
-    daegu.go.kr/gosan
-    daegu.go.kr/gw
-    daegu.go.kr/junggu
-    daegu.go.kr/namdm
-    daegu.go.kr/namic
-    daegu.go.kr/seogulib
-    daegu.go.kr/suseong
-    daegu.go.kr/yonghak
-     */
 
 /*
     @Bean
