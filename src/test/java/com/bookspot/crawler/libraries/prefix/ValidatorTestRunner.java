@@ -17,7 +17,7 @@ public class ValidatorTestRunner {
     };
 
     static LibraryHomePagesFileReader reader = new LibraryHomePagesFileReader();
-    static List<LibraryPageDto> csvData = reader.readLibrariesFromCsv("files/libraryHomePages_Prod.csv");
+    public static List<LibraryPageDto> csvData = reader.readLibrariesFromCsv("files/libraryHomePages_Prod.csv");
     static List<String> ignoreUrlList = IgnoreIsbnSearchUrlFormatter.WHITE_LIST;
     static IgnoreIsbnSearchUrlFormatter ignoreFormatter = new IgnoreIsbnSearchUrlFormatter();
 
