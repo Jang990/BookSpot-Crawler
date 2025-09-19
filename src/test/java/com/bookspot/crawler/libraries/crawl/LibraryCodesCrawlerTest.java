@@ -9,8 +9,8 @@ class LibraryCodesCrawlerTest {
     @Test
     void test() {
         crawler.crawlLi(
-                "https://kolas.cheonan.go.kr/search/index.php?mod=wdDataSearch&act=searchIList&serSec=detail&manageCode=DS&isbn=9788936434120",
-                "#_multiChk1 > li"
+                "https://library.daegu.go.kr/dalseolib/intro/search/index.do?menu_idx=9&viewPage=1&booktype=BOOKANDNONBOOK&libraryCodes=BU&isbn=9788936434120#search_result",
+                "#libraryList > div:nth-child(2) > ul > li"
         );
     }
 }

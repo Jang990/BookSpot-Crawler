@@ -1,7 +1,6 @@
 package com.bookspot.crawler.libraries.prefix.simple;
 
 import com.bookspot.crawler.libraries.prefix.ValidatorTestRunner;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -66,6 +65,27 @@ class SimpleOcFormatterConfigTest {
                 2,
                 ValidatorTestRunner.countRelatedLibrary(config.bsnamguUrlFormatter())
         );
+    }
+
+    @Test
+    void 대구_달서구_도서관() {
+        ValidatorTestRunner.countRelatedLibrary(config.daeguDalUrlFormatter());
+    }
+
+
+    @Test
+    void 대구_기타_도서관() {
+        assertEquals(6, ValidatorTestRunner.countRelatedLibrary(config.daeguOthersUrlFormatter()));
+    }
+
+    @Test
+    void 대구_수성구_도서관() {
+        assertEquals(3, ValidatorTestRunner.countRelatedLibrary(config.daeguBeomeoUrlFormatter()));
+    }
+
+    @Test
+    void sample() {
+        ValidatorTestRunner.countRelatedLibrary(config.sampleUrlFormatter());
     }
 
 
