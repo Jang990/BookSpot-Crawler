@@ -130,6 +130,25 @@ public class SimpleOcFormatterConfig {
         );
     }
 
+    // https://kolas.cheonan.go.kr/search/index.php?mod=wdDataSearch&act=searchIList&serSec=detail&manageCode=DS&isbn=9788936434120
+    @Bean
+    public IsbnSearchUrlFormatter cheonanUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "cheonan.go.kr",
+                "https://kolas.cheonan.go.kr/search/index.php?mod=wdDataSearch&act=searchIList&serSec=detail&manageCode=%s&isbn=",
+                Map.ofEntries(
+                        Map.entry("천안시아우내도서관", "BC"),
+                        Map.entry("천안시성거도서관", "BR"),
+                        Map.entry("천안시두정도서관", "DJ"),
+                        Map.entry("천안시도솔도서관", "DS"),
+                        Map.entry("천안시중앙도서관", "MA"),
+                        Map.entry("천안시신방도서관", "SC"),
+                        Map.entry("천안시쌍용도서관", "SY"),
+                        Map.entry("천안시청수도서관", "CS")
+                )
+        );
+    }
+
 /*
     @Bean
     public IsbnSearchUrlFormatter UrlFormatter() {

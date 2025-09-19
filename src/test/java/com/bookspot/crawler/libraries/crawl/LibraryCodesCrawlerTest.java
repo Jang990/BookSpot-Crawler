@@ -9,8 +9,8 @@ class LibraryCodesCrawlerTest {
     @Test
     void test() {
         crawler.crawlLi(
-                "https://lib.yongin.go.kr/yongin/menu/10181/program/30012/plusSearchSimple.do",
-                "#searchForm > div > div.searchLibArea > div.searchLibWrap > div.box_checkWrap > div > ul > li"
+                "https://kolas.cheonan.go.kr/search/index.php?mod=wdDataSearch&act=searchIList&serSec=detail&manageCode=DS&isbn=9788936434120",
+                "#_multiChk1 > li"
         );
     }
 }

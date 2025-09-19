@@ -52,6 +52,14 @@ class SimpleOcFormatterConfigTest {
         );
     }
 
+    @Test
+    void 천안시_도서관() {
+        assertEquals(
+                8,
+                ValidatorTestRunner.countRelatedLibrary(config.cheonanUrlFormatter())
+        );
+    }
+
 
 /*
     @Test
