@@ -19,6 +19,11 @@ class SimpleOcFormatterConfigTest {
         assertEquals(14, ValidatorTestRunner.countRelatedLibrary(config.sdmUrlFormatter()));
     }
 
+    @Test
+    void 서울도서관_단일() {
+        ValidatorTestRunner.countRelatedLibrary(config.seoulUrlFormatter());
+    }
+
 /*
     @Test
     void t() {

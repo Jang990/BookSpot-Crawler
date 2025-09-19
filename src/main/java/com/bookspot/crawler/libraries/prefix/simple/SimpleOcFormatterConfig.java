@@ -43,6 +43,14 @@ public class SimpleOcFormatterConfig {
         );
     }
 
+    @Bean
+    public IsbnSearchUrlFormatter seoulUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "seoul.go.kr",
+                "https://lib.seoul.go.kr/main/searchBrief?st=KWRD&si=TOTAL&sts=Y&lmt0=&searchType=&q="
+        );
+    }
+
 /*
     @Bean
     public IsbnSearchUrlFormatter UrlFormatter() {
