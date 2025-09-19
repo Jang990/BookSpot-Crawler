@@ -119,6 +119,7 @@ public class DaeguFormatterConfig {
                         "행복작은도서관", "HN"
 
                         DB에 있긴한데 긴가민가...
+                        // TODO: db 하드코딩?
                         "신암5동작은도서관", "HJ"           854
                         "율하5주민작은도서관", "HP"          1057
                         "꿈날자문고작은도서관", "HM"          326
