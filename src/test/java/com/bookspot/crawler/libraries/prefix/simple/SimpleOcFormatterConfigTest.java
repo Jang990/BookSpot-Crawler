@@ -34,7 +34,16 @@ class SimpleOcFormatterConfigTest {
         assertEquals(5, ValidatorTestRunner.countRelatedLibrary(config.wanjuUrlFormatter()));
     }
 
-    
+    @Test
+    void 원주시립_도서관() {
+        assertEquals(4, ValidatorTestRunner.countRelatedLibrary(config.wonjuUrlFormatter()));
+    }
+
+    @Test
+    void 양산시립_도서관() {
+        assertEquals(9, ValidatorTestRunner.countRelatedLibrary(config.yangsanUrlFormatter()));
+    }
+
 
 /*
     @Test

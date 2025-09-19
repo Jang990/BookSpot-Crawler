@@ -68,6 +68,39 @@ public class SimpleOcFormatterConfig {
         );
     }
 
+    @Bean
+    public IsbnSearchUrlFormatter wonjuUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "wonju.go.kr",
+                "https://lib.wonju.go.kr/ja/menu/234/book/search?search=true&searchType=normal&size=30&searchCondition=searchTxt&facetLibrary=%s&searchInput=",
+                Map.ofEntries(
+                        Map.entry("원주시립중앙도서관", "MA"),
+                        Map.entry("원주시립미리내도서관", "MQ"),
+                        Map.entry("원주시립샘마루도서관", "MS"),
+                        Map.entry("원주시립태장도서관", "MB")
+                )
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter yangsanUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "yangsan.go.kr",
+                "https://lib.yangsan.go.kr/YS/search/search.do?display=30&book_type=BOOK&search_type=normal&search_manage_code=%s&search_txt=",
+                Map.ofEntries(
+                        Map.entry("양산시립 중앙도서관", "MA"),
+                        Map.entry("양산시립 웅상도서관", "MB"),
+                        Map.entry("물구나무작은도서관", "FC"),
+                        Map.entry("양산시립 윤현진도서관", "MH"),
+                        Map.entry("양산시립 상북도서관", "MD"),
+                        Map.entry("원동작은도서관", "GF"),
+                        Map.entry("순지작은도서관", "FS"),
+                        Map.entry("양산시립 영어도서관", "MC"),
+                        Map.entry("양산시립 서창도서관", "ME")
+                )
+        );
+    }
+
 /*
     @Bean
     public IsbnSearchUrlFormatter UrlFormatter() {
