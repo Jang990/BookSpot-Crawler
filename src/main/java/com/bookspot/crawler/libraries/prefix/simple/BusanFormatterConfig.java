@@ -30,7 +30,11 @@ public class BusanFormatterConfig {
                         "bsdonggu.go.kr",
                         "gijang.go.kr",
                         "www.busanlib.net",
-                        "suyeong.go.kr"
+                        "suyeong.go.kr",
+                        "busan.go.kr",
+                        "saha.go.kr",
+                        "bsbukgu.go.kr",
+                        "busanjin.go.kr"
                 );
             }
 
@@ -75,12 +79,12 @@ public class BusanFormatterConfig {
                         Map.entry("부산광역시 강서도서관", "AR"),
                         Map.entry("부산광역시 지사도서관", "CB"),
 
-                        Map.entry("부산광역시 재송어린이도서관","AZ"),
-                        Map.entry("부산광역시 반여도서관","AT"),
-                        Map.entry("부산광역시 해운대인문학도서관","BR"),
+                        Map.entry("부산광역시 재송어린이도서관", "AZ"),
+                        Map.entry("부산광역시 반여도서관", "AT"),
+                        Map.entry("부산광역시 해운대인문학도서관", "BR"),
 
-                        Map.entry("부산광역시 동구어린이영어도서관","BT"),
-                        Map.entry("부산광역시 동구도서관","AS"),
+                        Map.entry("부산광역시 동구어린이영어도서관", "BT"),
+                        Map.entry("부산광역시 동구도서관", "AS"),
 
                         Map.entry("부산광역시 정관도서관", "BJ"),
                         Map.entry("부산광역시 기장도서관", "AX"),
@@ -93,7 +97,17 @@ public class BusanFormatterConfig {
 
                         Map.entry("부산광역시 수영구도서관", "AV"),
                         Map.entry("부산광역시 망미도서관", "AY"),
-                        Map.entry("부산광역시 수영구어린이도서관", "AO")
+                        Map.entry("부산광역시 수영구어린이도서관", "AO"),
+
+                        Map.entry("부산도서관", "BS"),
+
+                        Map.entry("부산광역시 다대도서관", "BC"),
+
+                        Map.entry("부산광역시 금곡도서관", "BN"),
+                        Map.entry("부산광역시 화명도서관", "BE"),
+                        Map.entry("부산광역시 만덕도서관", "AU"),
+
+                        Map.entry("부산광역시 부산진구어린이청소년도서관", "BL")
                 );
             }
 
@@ -114,13 +128,12 @@ public class BusanFormatterConfig {
     @Bean
     public IsbnSearchUrlFormatter sample() {
         return new SimpleUrlFormatter(
-                "geumjeong.go.kr"
+            "geumjeong.go.kr"
         );
     }
 
     /*
     dongnae.go.kr
-
     bsgangseo.go.kr
     busan.go.kr
     saha.go.kr
