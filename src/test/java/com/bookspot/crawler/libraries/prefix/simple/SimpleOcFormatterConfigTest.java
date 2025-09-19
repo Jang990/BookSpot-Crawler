@@ -1,5 +1,6 @@
 package com.bookspot.crawler.libraries.prefix.simple;
 
+import com.bookspot.crawler.libraries.prefix.IsbnSearchUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.ValidatorTestRunner;
 import org.junit.jupiter.api.Test;
 
@@ -10,44 +11,44 @@ class SimpleOcFormatterConfigTest {
 
     @Test
     void 옥천군_도서관() {
-        assertEquals(1, ValidatorTestRunner.countRelatedLibrary(config.ocUrlFormatter()));
+        assertEquals(1, count(config.ocUrlFormatter()));
     }
 
     @Test
     void 서대문구_도서관() {
-        assertEquals(14, ValidatorTestRunner.countRelatedLibrary(config.sdmUrlFormatter()));
+        assertEquals(14, count(config.sdmUrlFormatter()));
     }
 
     @Test
     void 서울도서관_단일() {
-        assertEquals(1, ValidatorTestRunner.countRelatedLibrary(config.seoulUrlFormatter()));
+        assertEquals(1, count(config.seoulUrlFormatter()));
     }
 
     @Test
     void 순창군도서관_단일_도서관선택_미지원() {
-        assertEquals(1, ValidatorTestRunner.countRelatedLibrary(config.sunchangUrlFormatter()));
+        assertEquals(1, count(config.sunchangUrlFormatter()));
     }
 
     @Test
     void 완주군립_도서관_도서관선택을_지원하나_맨뒤에_두는_방식이라_불가능() {
-        assertEquals(5, ValidatorTestRunner.countRelatedLibrary(config.wanjuUrlFormatter()));
+        assertEquals(5, count(config.wanjuUrlFormatter()));
     }
 
     @Test
     void 원주시립_도서관() {
-        assertEquals(4, ValidatorTestRunner.countRelatedLibrary(config.wonjuUrlFormatter()));
+        assertEquals(4, count(config.wonjuUrlFormatter()));
     }
 
     @Test
     void 양산시립_도서관() {
-        assertEquals(9, ValidatorTestRunner.countRelatedLibrary(config.yangsanUrlFormatter()));
+        assertEquals(9, count(config.yangsanUrlFormatter()));
     }
 
     @Test
     void 용인_도서관() {
         assertEquals(
                 18,
-                ValidatorTestRunner.countRelatedLibrary(config.yonginUrlFormatter())
+                count(config.yonginUrlFormatter())
         );
     }
 
@@ -55,7 +56,7 @@ class SimpleOcFormatterConfigTest {
     void 천안시_도서관() {
         assertEquals(
                 8,
-                ValidatorTestRunner.countRelatedLibrary(config.cheonanUrlFormatter())
+                count(config.cheonanUrlFormatter())
         );
     }
 
@@ -63,7 +64,7 @@ class SimpleOcFormatterConfigTest {
     void 부산_남구_도서관_ISBN검색_미지원() {
         assertEquals(
                 2,
-                ValidatorTestRunner.countRelatedLibrary(config.bsnamguUrlFormatter())
+                count(config.bsnamguUrlFormatter())
         );
     }
 
@@ -71,13 +72,17 @@ class SimpleOcFormatterConfigTest {
     void 거창군립_도서관_ISBN미지원_단일도서관() {
         assertEquals(
                 1,
-                ValidatorTestRunner.countRelatedLibrary(config.geochangUrlFormatter())
+                count(config.geochangUrlFormatter())
         );
     }
 
     @Test
     void sample() {
-        ValidatorTestRunner.countRelatedLibrary(config.sampleUrlFormatter());
+        count(config.sampleUrlFormatter());
+    }
+
+    private long count(IsbnSearchUrlFormatter formatter) {
+        return ValidatorTestRunner.countRelatedLibrary(formatter);
     }
 
 
