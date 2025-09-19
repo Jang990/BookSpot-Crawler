@@ -167,9 +167,17 @@ public class SimpleOcFormatterConfig {
     }
 
     @Bean
+    public IsbnSearchUrlFormatter geochangUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "geochang.go.kr",
+                "https://library.geochang.go.kr/lib/book_search/search_list.asp" + "?"
+        );
+    }
+
+    @Bean
     public IsbnSearchUrlFormatter sampleUrlFormatter() {
         return new SimpleUrlFormatter(
-                ""
+                "https://library.geochang.go.kr/lib/book_search/search_list.asp"
         );
     }
 
