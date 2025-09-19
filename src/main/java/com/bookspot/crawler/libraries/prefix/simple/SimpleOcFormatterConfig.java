@@ -101,6 +101,35 @@ public class SimpleOcFormatterConfig {
         );
     }
 
+    // https://lib.yongin.go.kr/yongin/menu/10182/program/30013/plusSearchResultList.do?searchType=DETAIL&searchCategory=BOOK&searchRoom=ALL&searchRecordCount=30&searchLibrary=MA&searchKey5=ISBN&searchKeyword5=9788936434120
+    @Bean
+    public IsbnSearchUrlFormatter yonginUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "yongin.go.kr",
+                "https://lib.yongin.go.kr/yongin/menu/10182/program/30013/plusSearchResultList.do?searchType=DETAIL&searchCategory=BOOK&searchRoom=ALL&searchRecordCount=30&searchLibrary=%s&searchKey5=ISBN&searchKeyword5=",
+                Map.ofEntries(
+                        Map.entry("보라도서관", "MM"),
+                        Map.entry("청덕도서관", "MP"),
+                        Map.entry("동백도서관", "MF"),
+                        Map.entry("기흥도서관", "MK"),
+                        Map.entry("구갈희망누리도서관", "MI"),
+                        Map.entry("구성도서관", "MD"),
+                        Map.entry("양지해밀도서관", "MJ"),
+                        Map.entry("흥덕도서관", "MN"),
+                        Map.entry("이동꿈틀도서관", "MX"),
+                        Map.entry("죽전도서관", "ME"),
+                        Map.entry("모현도서관", "ML"),
+                        Map.entry("포곡도서관", "MC"),
+                        Map.entry("상현도서관", "MO"),
+                        Map.entry("수지도서관", "MB"),
+                        Map.entry("용인중앙도서관", "MA"),
+                        Map.entry("남사도서관", "MY"),
+                        Map.entry("성복도서관", "NB"),
+                        Map.entry("서농도서관", "MZ")
+                )
+        );
+    }
+
 /*
     @Bean
     public IsbnSearchUrlFormatter UrlFormatter() {

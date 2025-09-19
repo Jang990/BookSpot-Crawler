@@ -44,6 +44,14 @@ class SimpleOcFormatterConfigTest {
         assertEquals(9, ValidatorTestRunner.countRelatedLibrary(config.yangsanUrlFormatter()));
     }
 
+    @Test
+    void 용인_도서관() {
+        assertEquals(
+                18,
+                ValidatorTestRunner.countRelatedLibrary(config.yonginUrlFormatter())
+        );
+    }
+
 
 /*
     @Test
