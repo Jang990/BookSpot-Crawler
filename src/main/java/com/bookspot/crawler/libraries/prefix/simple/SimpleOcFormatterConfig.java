@@ -153,19 +153,6 @@ public class SimpleOcFormatterConfig {
         );
     }
 
-
-    @Bean
-    public IsbnSearchUrlFormatter bsnamguUrlFormatter() {
-        return new SimpleUrlFormatter(
-                "bsnamgu.go.kr",
-                "https://library.bsnamgu.go.kr/bookSearchList.do?display=30&search_category=search_title&option=0&manage_code=%s&search_txt=",
-                Map.ofEntries(
-                        Map.entry("부산광역시 분포도서관","JT"),
-                        Map.entry("부산광역시 남구도서관","AQ")
-                )
-        );
-    }
-
     @Bean
     public IsbnSearchUrlFormatter geochangUrlFormatter() {
         return new SimpleUrlFormatter(
@@ -177,7 +164,7 @@ public class SimpleOcFormatterConfig {
     @Bean
     public IsbnSearchUrlFormatter sampleUrlFormatter() {
         return new SimpleUrlFormatter(
-                "https://library.geochang.go.kr/lib/book_search/search_list.asp"
+                "geumjeong.go.kr"
         );
     }
 

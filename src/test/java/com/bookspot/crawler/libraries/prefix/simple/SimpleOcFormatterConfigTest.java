@@ -61,14 +61,6 @@ class SimpleOcFormatterConfigTest {
     }
 
     @Test
-    void 부산_남구_도서관_ISBN검색_미지원() {
-        assertEquals(
-                2,
-                count(config.bsnamguUrlFormatter())
-        );
-    }
-
-    @Test
     void 거창군립_도서관_ISBN미지원_단일도서관() {
         assertEquals(
                 1,
