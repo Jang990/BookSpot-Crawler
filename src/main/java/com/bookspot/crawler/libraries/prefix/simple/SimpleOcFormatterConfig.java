@@ -51,6 +51,23 @@ public class SimpleOcFormatterConfig {
         );
     }
 
+    @Bean
+    public IsbnSearchUrlFormatter sunchangUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "sunchang.go.kr",
+                "https://lib.sunchang.go.kr/keywordSearchResult/"
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter wanjuUrlFormatter() {
+        // https://lib.wanju.go.kr:8443/search/keyword/9788936434120?manageCode=MA 이러면 도서관별로 되긴하는데 현재 구조에선 불가능
+        return new SimpleUrlFormatter(
+                "wanju.go.kr",
+                "https://lib.wanju.go.kr:8443/search/keyword/"
+        );
+    }
+
 /*
     @Bean
     public IsbnSearchUrlFormatter UrlFormatter() {
