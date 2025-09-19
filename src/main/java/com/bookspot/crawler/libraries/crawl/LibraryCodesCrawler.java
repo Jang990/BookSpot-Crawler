@@ -12,6 +12,7 @@ public class LibraryCodesCrawler {
         CrawlingResult result = crawler.get(url);
         int count = result.countElements(cssSelector);
 
+        System.out.println("=========> "+ count);
         for (int i = 1; i <= count; i++) {
             String targetLi = cssSelector + ":nth-child(%d)".formatted(i);
             String libraryName = result.findElementText(targetLi + "> Label");

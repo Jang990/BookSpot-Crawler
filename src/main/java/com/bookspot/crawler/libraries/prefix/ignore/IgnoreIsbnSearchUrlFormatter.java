@@ -12,7 +12,8 @@ public class IgnoreIsbnSearchUrlFormatter implements IsbnSearchUrlFormatter {
             "http://iw1lib.gangnam.go.kr/", // 일원1동작은도서관
             "http://suseolib.gangnam.go.kr/", // 수서동작은도서관
             "https://library.gangnam.go.kr/", // 일원2동문고
-            "http://eng.myclib.or.kr/" // 밀양시립영어도서관
+            "http://eng.myclib.or.kr/", // 밀양시립영어도서관
+            "gbeti.or.kr" // 경상북도교육청연수원
     );
 
     @Override

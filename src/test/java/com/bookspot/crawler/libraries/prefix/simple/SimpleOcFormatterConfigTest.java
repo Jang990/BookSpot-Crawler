@@ -105,6 +105,16 @@ class SimpleOcFormatterConfigTest {
     }
 
     @Test
+    void 당진시립() {
+        assertEquals(12, count(config.dangjinUrlFormatter()));
+    }
+
+    @Test
+    void 경상북도() {
+        assertEquals(27, count(config.gbelibUrlFormatter()));
+    }
+
+    @Test
     void sample() {
         count(config.sampleUrlFormatter());
     }

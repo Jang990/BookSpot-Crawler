@@ -307,9 +307,69 @@ public class SimpleOcFormatterConfig {
     }
 
     @Bean
+    public IsbnSearchUrlFormatter dangjinUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "dangjin.go.kr",
+                "https://lib.dangjin.go.kr/dls_le/index.php?mod=wdDataSearch&act=searchIList&deSearch=1&serSec=detail&manageCode=%s&isbn=",
+                Map.ofEntries(
+                        Map.entry("고대웃음꽃 작은도서관", "BA"),
+                        Map.entry("당진시립송악도서관", "MB"),
+                        Map.entry("송악샘터 작은도서관", "BF"),
+                        Map.entry("순성반딧불이 작은도서관", "BC"),
+                        Map.entry("원당꿈초롱 작은도서관", "BE"),
+                        Map.entry("송악해나루 작은도서관", "BG"),
+                        Map.entry("석문생각나무 작은도서관", "BB"),
+                        Map.entry("당진시립중앙도서관", "MA"),
+                        Map.entry("대호지책나래 작은도서관", "BH"),
+                        Map.entry("당진시립합덕도서관", "MC"),
+                        Map.entry("신평책다솜 작은도서관", "BJ"),
+                        Map.entry("송산개미 작은도서관", "BD")
+                )
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter gbelibUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "gbelib.kr",
+                "https://www.gbelib.kr/ad/intro/search/index.do?menu_idx=8&search_type=L_ISBN&sortField=DISP01&rowCount=30&libraryCodes=%s&search_text=",
+                Map.ofEntries(
+                        Map.entry("경상북도교육청정보센터", "00147046"),
+                        Map.entry("경상북도교육청 구미도서관", "00147003"),
+                        Map.entry("경상북도교육청 안동도서관", "00147010"),
+                        Map.entry("경상북도교육청 안동도서관 용상분관", "00147011"),
+                        Map.entry("경상북도교육청 안동도서관 풍산분관", "00147039"),
+                        Map.entry("경상북도교육청 상주도서관", "00147008"),
+                        Map.entry("경상북도교육청 상주도서관 화령분관", "00147040"),
+                        Map.entry("경상북도교육청문화원 종합정보자료실", "00147105"),
+                        Map.entry("경상북도교육청 영일도서관", "00147013"),
+                        Map.entry("경상북도교육청 외동도서관", "00147016"),
+                        Map.entry("경상북도교육청 영주선비도서관", "00147032"),
+                        Map.entry("경상북도교육청 영주선비도서관 풍기분관", "00147024"), // 영주도서관 => 영주선비도서관 바꿈
+                        Map.entry("경상북도교육청 금호도서관", "00147014"),
+                        Map.entry("경상북도교육청 점촌도서관", "00147020"),
+                        Map.entry("경상북도교육청 점촌도서관 가은분관", "00147006"),
+                        Map.entry("경상북도교육청 의성도서관", "00147019"),
+                        Map.entry("경상북도교육청 청송도서관", "00147022"),
+                        Map.entry("경상북도교육청 영양도서관", "00147012"),
+                        Map.entry("경상북도교육청 영덕도서관", "00147031"),
+                        Map.entry("경상북도교육청 청도도서관", "00147021"),
+                        Map.entry("경상북도교육청 고령도서관", "00147002"),
+                        Map.entry("경상북도교육청 성주도서관", "00147009"),
+                        Map.entry("경상북도교육청 칠곡도서관", "00147023"),
+                        Map.entry("경상북도교육청 예천도서관", "00147015"),
+                        Map.entry("경상북도교육청 봉화도서관", "00147007"),
+                        Map.entry("경상북도교육청 울진도서관", "00147018"),
+                        Map.entry("경상북도교육청 울릉도서관", "00147017"),
+                        Map.entry("경상북도교육청 전자도서관", "00000001")
+                )
+        );
+    }
+
+    @Bean
     public IsbnSearchUrlFormatter sampleUrlFormatter() {
         return new SimpleUrlFormatter(
-                "bppl.or.kr"
+                "gclib.go.kr"
         );
     }
 
