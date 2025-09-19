@@ -290,9 +290,26 @@ public class SimpleOcFormatterConfig {
     }
 
     @Bean
+    public IsbnSearchUrlFormatter bpplUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "bppl.or.kr",
+                "https://www.bppl.or.kr/bugae/menu/10095/program/30031/searchResultList.do?searchType=DETAIL&searchCategory=ALL&searchKey5=ISBN&searchLibrary=%s&searchKeyword5=",
+                Map.ofEntries(
+                        Map.entry("부평구립부개도서관", "ME"),
+                        Map.entry("부평구립부개어린이도서관", "MB"),
+                        Map.entry("부평구립청천도서관", "MF"),
+                        Map.entry("부평구립갈산도서관", "MC"),
+                        Map.entry("부평기적의도서관", "MA"),
+                        Map.entry("부평구립삼산도서관", "MD")
+                )
+
+        );
+    }
+
+    @Bean
     public IsbnSearchUrlFormatter sampleUrlFormatter() {
         return new SimpleUrlFormatter(
-                "apl.go.kr"
+                "bppl.or.kr"
         );
     }
 

@@ -95,7 +95,13 @@ class SimpleOcFormatterConfigTest {
 
     @Test
     void 안성시() {
-        count(config.aplUrlFormatter());
+        assertEquals(11, count(config.aplUrlFormatter()));
+    }
+
+
+    @Test
+    void 인천_부평() {
+        assertEquals(6, count(config.bpplUrlFormatter()));
     }
 
     @Test
