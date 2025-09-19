@@ -20,10 +20,22 @@ public class LibraryCodesCrawler {
         }
     }
 
+    public void crawlBusan(String url, String cssSelector) {
+        CrawlingResult result = crawler.get(url);
+        int count = result.countElements(cssSelector);
+
+        for (int i = 1; i <= count; i++) {
+            String targetLi = cssSelector + ":nth-child(%d)".formatted(i);
+            String libraryName = result.findElementText(targetLi + "> a");
+            String code = result.findElementAttribute(targetLi + "> a", "onclick")
+                    .replace("countResultResearcher('", "").replace("')", "");
+            System.out.println(escape(libraryName) + ", " + escape(code));
+        }
+    }
+
     private static String escape(String libraryName) {
         return "\"" + libraryName + "\"";
     }
 
 
-    public record LibraryCode(String name, String code) { }
 }
