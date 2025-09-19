@@ -1,8 +1,8 @@
 package com.bookspot.crawler.libraries.prefix.simple;
 
-import com.bookspot.crawler.libraries.prefix.ValidatorTestRunner;
 import org.junit.jupiter.api.Test;
 
+import static com.bookspot.crawler.libraries.prefix.ValidatorTestRunner.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BusanFormatterConfigTest {
@@ -10,7 +10,12 @@ class BusanFormatterConfigTest {
 
     @Test
     void 부산_도서관_ISBN검색_불가능_도서관_선택_가능() {
-        ValidatorTestRunner.countRelatedLibrary(config.commonBusanUrlFormatter());
+        countRelatedLibrary(config.commonBusanUrlFormatter());
+    }
+
+    @Test
+    void sample() {
+        countRelatedLibrary(config.sample());
     }
 
 }

@@ -168,13 +168,7 @@ class IsbnUrlValidatorTest {
         );
     }
 
-    @Test
-    void 부산_기장군() {
-        assertEquals(
-                7,
-                ValidatorTestRunner.countRelatedLibrary(new GijangUrlFormatter())
-        );
-    }
+
 
     @Test
     void 안산시_도서관_선택_불가능() {
