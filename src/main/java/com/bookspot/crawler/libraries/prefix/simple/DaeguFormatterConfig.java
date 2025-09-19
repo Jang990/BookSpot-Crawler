@@ -20,7 +20,9 @@ public class DaeguFormatterConfig {
             public String[] getDomains() {
                 return BasicUrlFormatElements.toMultiDomain(
                         "daegu.go.kr/dalseolib",
-                        "daegu.go.kr/beomeo"
+                        "daegu.go.kr/beomeo",
+                        "daegu.go.kr/bukgs",
+                        "daegu.go.kr/buktj"
                 );
             }
 
@@ -43,12 +45,28 @@ public class DaeguFormatterConfig {
                         // 수성구립
                         Map.entry("수성구립책숲길도서관", "BJ"),
                         Map.entry("수성구립물망이도서관", "BK"),
-                        Map.entry("수성구립범어도서관", "BD")
+                        Map.entry("수성구립범어도서관", "BD"),
+
+                        // 북구
+//                            Map.entry("대현도서관", "BB"),
+//                            Map.entry("대구시청작은도서관", "FV"),
+                        Map.entry("대구 북구 태전도서관", "BC"),
+                        Map.entry("대구 북구 구수산도서관", "BA"),
+                        Map.entry("서변숲도서관", "HW"),
+                        Map.entry("산격1동 작은도서관", "GL"),
+                        Map.entry("대구 북구 영어 작은도서관", "GM"),
+                        Map.entry("침산1동 작은도서관", "GN"),
+                        Map.entry("서변동 작은도서관", "HB"),
+                        Map.entry("노원행복 작은도서관", "HD"),
+                        Map.entry("한강공원부키 도서관", "HE")
                 );
             }
 
             @Override
             public String format(LibraryPageDto dto) {
+                if("노원동 작은도서관".equals(dto.name()))
+                    return null;
+
                 Matcher m = Pattern.compile("kr/([^/]+)").matcher(dto.homePage());
                 if (!m.find())
                     throw new IllegalArgumentException(dto.toString());
@@ -70,7 +88,8 @@ public class DaeguFormatterConfig {
                         "daegu.go.kr/bukbu",
                         "daegu.go.kr/duryu",
                         "daegu.go.kr/nambu",
-                        "daegu.go.kr/seobu"
+                        "daegu.go.kr/seobu",
+                        "daegu.go.kr/bukdh"
                 );
             }
 
@@ -91,14 +110,12 @@ public class DaeguFormatterConfig {
     @Bean
     public IsbnSearchUrlFormatter sample2UrlFormatter() {
         return new SimpleUrlFormatter(
-                ""
+                "daegu.go.kr/buktj"
         );
     }
 
     /*
-    daegu.go.kr/bukdh
-    daegu.go.kr/bukgs
-    daegu.go.kr/buktj
+
     daegu.go.kr/dalseong
     daegu.go.kr/dalseongchild
     daegu.go.kr/dongbu

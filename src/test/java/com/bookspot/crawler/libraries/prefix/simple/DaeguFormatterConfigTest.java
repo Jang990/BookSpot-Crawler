@@ -9,14 +9,19 @@ class DaeguFormatterConfigTest {
     DaeguFormatterConfig config = new DaeguFormatterConfig();
 
     @Test
-    void 대구_달서구_도서관() {
-        assertEquals(15, ValidatorTestRunner.countRelatedLibrary(config.daeguCommonUrlFormatter()));
+    void 대구_도서관() {
+        assertEquals(24, ValidatorTestRunner.countRelatedLibrary(config.daeguCommonUrlFormatter()));
     }
 
 
     @Test
     void 대구_기타_도서관() {
-        assertEquals(6, ValidatorTestRunner.countRelatedLibrary(config.daeguOthersUrlFormatter()));
+        assertEquals(7, ValidatorTestRunner.countRelatedLibrary(config.daeguOthersUrlFormatter()));
+    }
+
+    @Test
+    void sample() {
+        ValidatorTestRunner.countRelatedLibrary(config.sample2UrlFormatter());
     }
 
 }
