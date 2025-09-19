@@ -9,8 +9,8 @@ class LibraryCodesCrawlerTest {
     @Test
     void test() {
         crawler.crawlLi(
-                "https://library.daegu.go.kr/donggu/intro/search/index.do?menu_idx=9#search_result",
-                "#libraryList > div:nth-child(2) > ul > li"
+                "https://phlib.pohang.go.kr/phlib/intro/search/index.do?menu_idx=297&booktype=BOOK&rowCount=30&libraryCodes=lib_ME&search_text=9788936434120",
+                "#guLipLibrarySection > li"
         );
     }
 

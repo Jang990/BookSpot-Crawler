@@ -69,6 +69,36 @@ class SimpleOcFormatterConfigTest {
     }
 
     @Test
+    void 금산군() {
+        assertEquals(5, count(config.geumsanUrlFormatter()));
+    }
+
+    @Test
+    void 경주시립() {
+        assertEquals(6, count(config.gyeongjuUrlFormatter()));
+    }
+
+    @Test
+    void 연천군() {
+        assertEquals(7, count(config.yeoncheonUrlFormatter()));
+    }
+
+    @Test
+    void 포항() {
+        assertEquals(41, count(config.pohangUrlFormatter()));
+    }
+
+    @Test
+    void 서초구_도서관_선택_불가() {
+        assertEquals(23, count(config.seocholibUrlFormatter()));
+    }
+
+    @Test
+    void 안성시() {
+        count(config.aplUrlFormatter());
+    }
+
+    @Test
     void sample() {
         count(config.sampleUrlFormatter());
     }
