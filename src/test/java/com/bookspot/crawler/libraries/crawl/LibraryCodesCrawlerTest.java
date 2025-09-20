@@ -9,8 +9,8 @@ class LibraryCodesCrawlerTest {
     @Test
     void test() {
         crawler.crawlLi(
-                "https://www.unilib.dobong.kr/site/search/search00.do?cmd_name=bookandnonbooksearch&search_type=detail&manage_code=MA%2CMB%2CME%2CMG%2CMJ%2CMF%2CMH%2CSA%2CMD%2CSL%2CSM%2CSN%2CSO%2CSP%2CSJ%2CSK%2CSQ%2CSR%2CSS%2CST%2CSU%2CSG%2CSC&search_txt=9788936434120",
-                "#ul_small_lib2 > li"
+                "https://www.l4d.or.kr/intro/menu/10097/program/30011/plusSearchResultList.do?searchType=DETAIL&searchCategory=ALL&searchKey1=TITLE&searchKeyword1=&searchOperator1=AND&searchKey2=AUTHOR&searchKeyword2=&searchOperator2=AND&searchKey3=PUBLISHER&searchKeyword3=&searchOperator3=AND&searchKey4=KEYWORD&searchKeyword4=&searchOperator4=AND&searchKey6=REG_NO&searchKeyword6=&searchOperator6=AND&searchKey5=ISBN&searchKeyword5=9788936434120&searchOperator5=AND&searchSeparateShelfCode=&searchPublishStartYear=&searchPublishEndYear=&searchLibrary=MM&searchRoom=ALL&searchSort=KEY&searchOrder=DESC&searchRecordCount=10",
+                "#searchForm > div.searchCheckBox.mt10 > div > ul > li"
         );
     }
 

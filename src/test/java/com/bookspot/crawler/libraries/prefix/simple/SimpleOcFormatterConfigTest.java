@@ -145,6 +145,36 @@ class SimpleOcFormatterConfigTest {
     }
 
     @Test
+    void 제주시_ISBN_미지원() {
+        assertEquals(15, count(config.jejuUrlFormatter()));
+    }
+
+    @Test
+    void 화성시립() {
+        assertEquals(30, count(config.hscitylibUrlFormatter()));
+    }
+
+    @Test
+    void 인천_서구() {
+        assertEquals(6, count(config.isslUrlFormatter()));
+    }
+
+    @Test
+    void 서울_중량() {
+        assertEquals(6, count(config.jungnangUrlFormatter()));
+    }
+
+    @Test
+    void 동대문구() {
+        assertEquals(24, count(config.l4dUrlFormatter()));
+    }
+
+    @Test
+    void 미추홀구() {
+        assertEquals(6, count(config.michuhollUrlFormatter()));
+    }
+
+    @Test
     void sample() {
         count(config.sampleUrlFormatter());
     }

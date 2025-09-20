@@ -493,9 +493,162 @@ public class SimpleOcFormatterConfig {
     }
 
     @Bean
+    public IsbnSearchUrlFormatter jejuUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "jeju.go.kr",
+                "https://www.jeju.go.kr/lib/service/search/simple.htm?lib=%s&q=",
+                Map.ofEntries(
+                        Map.entry("한라도서관", "MJ"),
+                        Map.entry("제주 우당도서관", "MK"),
+                        Map.entry("제주 탐라도서관", "ML"),
+                        Map.entry("제주기적의도서관", "MM"),
+                        Map.entry("제주 애월도서관", "MP"),
+                        Map.entry("제주 조천읍도서관", "MN"),
+                        Map.entry("제주 한경도서관", "MQ"),
+                        Map.entry("제주 삼매봉도서관", "MA"),
+                        Map.entry("제주 중앙도서관", "MB"),
+                        Map.entry("제주 동부도서관", "MC"),
+                        Map.entry("제주 서부도서관", "MD"),
+                        Map.entry("서귀포기적의도서관", "ME"),
+                        Map.entry("제주 성산일출도서관", "MH"),
+                        Map.entry("제주 안덕산방도서관", "MF"),
+                        Map.entry("제주 표선도서관", "MG"),
+                        Map.entry("제주 꿈바당어린이도서관", "XY")
+                )
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter hscitylibUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "hscitylib.or.kr",
+                "https://www.hscitylib.or.kr/iutlib/menu/10684/program/30001/searchResultList.do?searchType=SIMPLE&searchDisplay=40&searchManageCodeArr=%s&searchKeyword=",
+                Map.ofEntries(
+                        Map.entry("화성시립남양도서관", "MA"),
+                        Map.entry("화성시립태안도서관", "MB"),
+                        Map.entry("화성시립삼괴도서관", "MC"),
+                        Map.entry("화성시립병점도서관", "MD"),
+                        Map.entry("화성시립봉담도서관", "MG"),
+                        Map.entry("화성시립동탄복합문화센터도서관", "MK"),
+                        Map.entry("화성시립송산도서관", "ML"),
+                        Map.entry("화성시립정남도서관", "MM"),
+                        Map.entry("화성시립진안도서관", "MO"),
+                        Map.entry("화성시립왕배푸른숲도서관", "MW"),
+                        Map.entry("화성시립노을빛도서관", "MX"),
+                        Map.entry("화성시립향남복합문화센터도서관", "NA"),
+                        Map.entry("화성시립동탄중앙이음터도서관", "MP"),
+                        Map.entry("화성시립동탄다원이음터도서관", "MR"),
+                        Map.entry("화성시립송린이음터도서관", "MS"),
+                        Map.entry("화성시립두빛나래어린이도서관", "MF"),
+                        Map.entry("화성시립동탄목동이음터도서관", "MI"),
+                        Map.entry("화성시립서연이음터도서관", "MY"),
+                        Map.entry("화성시립둥지나래어린이도서관", "MH"),
+                        Map.entry("화성시립달빛나래어린이도서관", "TB"),
+                        Map.entry("화성시립샘내작은도서관", "ME"),
+                        Map.entry("화성시립기아행복마루작은도서관", "MJ"),
+                        Map.entry("화성시립비봉작은도서관", "MN"),
+                        Map.entry("화성시립마도작은도서관", "MU"),
+                        Map.entry("화성시립팔탄작은도서관", "MT"),
+                        Map.entry("화성시립양감작은도서관", "MQ"),
+                        Map.entry("화성시립봉담커피앤북작은도서관", "MV"),
+                        Map.entry("화성시립늘봄이음터작은도서관", "TA"),
+                        Map.entry("화성시립호연이음터작은도서관", "MZ"),
+                        Map.entry("화성시립서신작은도서관", "TC"),
+                        Map.entry("화성시립가족만세센터도서관", "TD")
+                )
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter isslUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "issl.go.kr",
+                "https://www.issl.go.kr/sch/bsch/list.do?mnidx=1597&searchLibMngCd=%s&searchKeyword=",
+                Map.ofEntries(
+                        Map.entry("인천 서구 검단도서관", "MB"),
+                        Map.entry("인천 서구 검암도서관", "MG"),
+                        Map.entry("인천 서구 석남도서관", "MA"),
+                        Map.entry("인천 서구 심곡도서관", "MD"),
+                        Map.entry("인천 서구 신석도서관", "MF"),
+                        Map.entry("인천 서구 단봉늘봄도서관", "MH")
+                )
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter jungnangUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "jungnanglib.seoul.kr",
+                "https://www.jungnanglib.seoul.kr/sblib/menu/10712/program/30001/searchResultList.do?searchType=SIMPLE&searchDisplay=30&searchManageCodeArr=%s&searchKeyword=",
+                Map.ofEntries(
+                        Map.entry("중화어린이도서관", "MC"),
+                        Map.entry("중랑구립정보도서관", "MA"),
+                        Map.entry("중랑구립면목정보도서관", "MB"),
+                        Map.entry("중랑구립상봉도서관", "MF"),
+                        Map.entry("중랑숲어린이도서관", "MD"),
+                        Map.entry("중랑구립양원숲속도서관", "ME")
+                )
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter l4dUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "l4d.or.kr",
+                "https://www.l4d.or.kr/intro/menu/10097/program/30011/plusSearchResultList.do?searchType=DETAIL&searchKey5=ISBN&searchRecordCount=30&searchLibrary=%s&searchKeyword5=",
+                Map.ofEntries(
+                        Map.entry("동대문구정보화도서관", "MA"),
+                        Map.entry("동대문구답십리도서관", "MF"),
+                        Map.entry("배봉산 숲속도서관", "SP"),
+                        Map.entry("동대문책마당도서관", "SN"),
+                        Map.entry("휘경행복도서관", "MM"),
+                        Map.entry("제기동감초마을 현진건기념도서관", "MN"),
+                        Map.entry("장안어린이도서관", "MB"),
+                        Map.entry("용두어린이영어도서관", "MC"),
+                        Map.entry("휘경어린이도서관", "MJ"),
+                        Map.entry("이문어린이도서관", "ME"),
+                        Map.entry("이문체육문화센터 어린이도서관", "MD"),
+                        Map.entry("전곡마을 작은도서관", "MG"),
+                        Map.entry("장안 가온누리 작은도서관", "MH"),
+                        Map.entry("동대문구 장안 벚꽃길 작은도서관", "MI"),
+                        Map.entry("전농2동 뜨락 작은도서관", "SM"),
+                        Map.entry("답십리1동 아름드리 작은도서관", "SI"),
+                        Map.entry("답십리2동 민들레 작은도서관", "SL"),
+                        Map.entry("장안1동 작은도서관", "SF"),
+                        Map.entry("휘경1동 새싹마루 작은도서관", "SK"),
+                        Map.entry("휘경2동 꿈빛누리 작은도서관", "SH"),
+                        Map.entry("이문1동 꿈꾸는 작은도서관", "SJ"),
+                        Map.entry("이문2동 작은도서관", "SA"),
+                        Map.entry("장안마루 작은도서관", "SO"),
+                        Map.entry("장안꿈마루어린이 작은도서관", "SQ"),
+                        Map.entry("용두어울림작은도서관", "SR"),
+                        Map.entry("답십리역스마트도서관", "ML"),
+                        Map.entry("용두역스마트도서관", "MK")
+                )
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter michuhollUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "michuhollib.go.kr",
+                "https://www.michuhollib.go.kr/itg/sch/bsch/list.do?mnidx=385&searchLibMngCd=%s&searchKeyword=",
+                Map.ofEntries(
+                        Map.entry("송도국제기구도서관", "MB"),
+                        Map.entry("청라호수도서관", "ME"),
+                        Map.entry("마전도서관", "MF"),
+                        Map.entry("영종하늘도서관", "MC"),
+                        Map.entry("청라국제도서관", "MD"),
+                        Map.entry("미추홀도서관", "MA"),
+                        Map.entry("인천시청 행정자료실", "MG")
+                )
+        );
+    }
+
+    @Bean
     public IsbnSearchUrlFormatter sampleUrlFormatter() {
         return new SimpleUrlFormatter(
-                "unilib.dobong.kr"
+                "michuhollib.go.kr"
         );
     }
 
