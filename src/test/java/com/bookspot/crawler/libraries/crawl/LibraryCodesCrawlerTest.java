@@ -9,8 +9,8 @@ class LibraryCodesCrawlerTest {
     @Test
     void test() {
         crawler.crawlLi(
-                "https://www.l4d.or.kr/intro/menu/10097/program/30011/plusSearchResultList.do?searchType=DETAIL&searchCategory=ALL&searchKey1=TITLE&searchKeyword1=&searchOperator1=AND&searchKey2=AUTHOR&searchKeyword2=&searchOperator2=AND&searchKey3=PUBLISHER&searchKeyword3=&searchOperator3=AND&searchKey4=KEYWORD&searchKeyword4=&searchOperator4=AND&searchKey6=REG_NO&searchKeyword6=&searchOperator6=AND&searchKey5=ISBN&searchKeyword5=9788936434120&searchOperator5=AND&searchSeparateShelfCode=&searchPublishStartYear=&searchPublishEndYear=&searchLibrary=MM&searchRoom=ALL&searchSort=KEY&searchOrder=DESC&searchRecordCount=10",
-                "#searchForm > div.searchCheckBox.mt10 > div > ul > li"
+                "https://lib.sejong.go.kr/main/site/search/bookSearch.do?cmd_name=bookandnonbooksearch&search_type=detail&search_isbn_issn=9788936434120&manage_code=MQ#detail",
+                "#frm_sch > fieldset > div > div.total_list_box > dl > dd > div.part2 > dl > dd > ul > li"
         );
     }
 
