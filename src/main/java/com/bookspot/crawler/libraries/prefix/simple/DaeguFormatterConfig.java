@@ -30,7 +30,8 @@ public class DaeguFormatterConfig {
                         "daegu.go.kr/seogulib", // 서구
 
                         "daegu.go.kr/donggu", "donggu-lib.kr",  // 동구 (-lib는 앞에걸로 리다이렉트됨)
-                        "www.dcasia.or.kr" // 동구 늘푸른 도서관
+                        "www.dcasia.or.kr",// 동구 늘푸른 도서관
+                        "www.nurinumi.com" // 동구 행복 작은도서관
 
                 );
             }
@@ -114,9 +115,9 @@ public class DaeguFormatterConfig {
                         Map.entry("신천3동 작은도서관", "FK"),
                         Map.entry("도평동 작은도서관", "FL"),
                         Map.entry("효목1동 작은도서관", "GT"),
-                        Map.entry("늘푸른 도서관", "HK")
+                        Map.entry("늘푸른 도서관", "HK"),
+                        Map.entry("행복 작은도서관", "HN")
                         /*
-                        "행복작은도서관", "HN"
 
                         DB에 있긴한데 긴가민가...
                         // TODO: db 하드코딩?
@@ -129,6 +130,10 @@ public class DaeguFormatterConfig {
 
             @Override
             public String format(LibraryPageDto dto) {
+                if("행복 작은도서관".equals(dto.name()))
+                    return "https://library.daegu.go.kr/%s/intro/search/index.do?menu_idx=9&viewPage=1&booktype=BOOKANDNONBOOK&libraryCodes=%s&isbn="
+                            .formatted("donggu", getLibraryCode(dto));
+
                 if("노원동 작은도서관".equals(dto.name()))
                     return null;
                 String homepage = dto.homePage();

@@ -5,6 +5,7 @@ import com.bookspot.crawler.libraries.file.LibraryPageDto;
 import com.bookspot.crawler.libraries.prefix.ignore.IgnoreIsbnSearchUrlFormatter;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -56,11 +57,20 @@ public class ValidatorTestRunner {
         long size = csvData.stream().filter(formatter::supports).count();
         System.out.println("size = " + size);
 
-        csvData.stream()
-                .filter(formatter::supports)
-                .forEach(lib ->
-                        System.out.println(lib.name() + " | " + lib.homePage() + " | " + formatter.format(lib)+expectedIsbn13Array[0])
-                );
-        return size;
+        List<LibraryPageDto> unsupported = new ArrayList<>();
+        for (LibraryPageDto lib : csvData) {
+            if(!formatter.supports(lib))
+                continue;
+            try{
+                System.out.println(lib.name() + " | " + lib.homePage() + " | " + formatter.format(lib) + expectedIsbn13Array[0]);
+            } catch (IllegalArgumentException e) {
+                unsupported.add(lib);
+            }
+        }
+
+        if(unsupported.isEmpty())
+            return size;
+        System.out.println("지원하지 않는 도서관 = " + unsupported.stream().map(LibraryPageDto::name).toList());
+        throw new IllegalArgumentException();
     }
 }

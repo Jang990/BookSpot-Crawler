@@ -11,6 +11,6 @@ class LibraryHomePagesFileReaderTest {
     @Test
     void test() {
         List<LibraryPageDto> dtos = reader.readLibrariesFromCsv("files/libraryHomePages_Prod.csv");
-        assertEquals(1590, dtos.size());
+        assertEquals(1587, dtos.size());
     }
 }

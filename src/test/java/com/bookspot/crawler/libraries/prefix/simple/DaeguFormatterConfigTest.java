@@ -11,7 +11,7 @@ class DaeguFormatterConfigTest {
 
     @Test
     void 대구_도서관() {
-        assertEquals(55, ValidatorTestRunner.countRelatedLibrary(config.daeguCommonUrlFormatter()));
+        assertEquals(56, ValidatorTestRunner.countRelatedLibrary(config.daeguCommonUrlFormatter()));
     }
 
 

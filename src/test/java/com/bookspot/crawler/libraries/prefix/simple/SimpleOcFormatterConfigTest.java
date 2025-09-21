@@ -95,7 +95,7 @@ class SimpleOcFormatterConfigTest {
 
     @Test
     void 안성시() {
-        assertEquals(11, count(config.aplUrlFormatter()));
+        assertEquals(13, count(config.aplUrlFormatter()));
     }
 
 
@@ -372,6 +372,202 @@ class SimpleOcFormatterConfigTest {
     @Test
     void 울진군() {
         assertEquals(8, count(config.uljinUrlFormatter()));
+    }
+
+    @Test
+    void 양천구() {
+        assertEquals(9, count(config.yangcheonUrlFormatter()));
+    }
+
+    @Test
+    void 유성구_ISBN검색_미지원() {
+        assertEquals(9, count(config.yuseongUrlFormatter()));
+    }
+
+    @Test
+    void 청주() {
+        assertEquals(15, count(config.cheongjuUrlFormatter()));
+    }
+
+    @Test
+    void 칠곡군립() {
+        assertEquals(3, count(config.chilgokUrlFormatter()));
+    }
+
+    @Test
+    void 춘천시립() {
+        assertEquals(8, count(config.chuncheonUrlFormatter()));
+    }
+
+    @Test
+    void 울산_동구() {
+        assertEquals(5, count(config.ulsanDongguUrlFormatter()));
+    }
+
+    @Test
+    void 광주_서구_모든_검색이_CSR() {
+        assertEquals(4, count(config.gwangjuSeoguUrlFormatter()));
+    }
+
+    @Test
+    void 속초_시립() {
+        assertEquals(2, count(config.sokchoUrlFormatter()));
+    }
+
+    @Test
+    void 순천시립() {
+        assertEquals(9, count(config.suncheonUrlFormatter()));
+    }
+
+    @Test
+    void 마포() {
+        assertEquals(15, count(config.mapoUrlFormatter()));
+    }
+
+    @Test
+    void 노원_도서관_선택_불가능_CSR() {
+        assertEquals(35, count(config.nowonlibUrlFormatter()));
+    }
+
+    @Test
+    void 성남시() {
+        assertEquals(18, count(config.snlibUrlFormatter()));
+    }
+
+    @Test
+    void 울산_북구() {
+        assertEquals(22, count(config.ulsanBukguUrlFormatter()));
+    }
+
+    @Test
+    void 충주시립() {
+        assertEquals(6, count(config.chungjuUrlFormatter()));
+    }
+
+    @Test
+    void 단양군립() {
+        assertEquals(2, count(config.danyangUrlFormatter()));
+    }
+
+    @Test
+    void 가평군() {
+        assertEquals(4, count(config.gaplibUrlFormatter()));
+    }
+
+    @Test
+    void 강북() {
+        assertEquals(7, count(config.gblibUrlFormatter()));
+    }
+
+    @Test
+    void 고흥군립_ISBN검색_불가능() {
+        assertEquals(3, count(config.ghlibUrlFormatter()));
+    }
+
+    @Test
+    void 곡성_ISBN검색_불가능() {
+        assertEquals(2, count(config.gokseongUrlFormatter()));
+    }
+
+    @Test
+    void 공주시() {
+        assertEquals(2, count(config.gongjulibUrlFormatter()));
+    }
+
+    @Test
+    void 고양시() {
+        assertEquals(26, count(config.goyanglibUrlFormatter()));
+    }
+
+    @Test
+    void 하남시() {
+        assertEquals(8, count(config.hanamlibUrlFormatter()));
+    }
+
+    @Test
+    void 서울시_중구() {
+        assertEquals(8, count(config.junggulibUrlFormatter()));
+    }
+
+    @Test
+    void 양주시립() {
+        assertEquals(10, count(config.libyjUrlFormatter()));
+    }
+
+    @Test
+    void 목포() {
+        assertEquals(4, count(config.mokpolibUrlFormatter()));
+    }
+
+    @Test
+    void 인천_남동_도서관_선택불가능() {
+        // https://alpasq.namdonglib.go.kr/search/keyword/9788936434120?manageCode=MB 이렇게해야만 가능함.
+        assertEquals(3, count(config.namdonglibUrlFormatter()));
+    }
+
+    @Test
+    void 남원() {
+        assertEquals(3, count(config.namwonUrlFormatter()));
+    }
+
+    @Test
+    void 평택() {
+        assertEquals(14, count(config.ptlibUrlFormatter()));
+    }
+
+    @Test
+    void 서울_성북구() {
+        assertEquals(14, count(config.sblibUrlFormatter()));
+    }
+
+    @Test
+    void 서울_성동구() {
+        assertEquals(7, count(config.sdlibUrlFormatter()));
+    }
+
+    @Test
+    void 태백시립() {
+        assertEquals(2, count(config.taebaekUrlFormatter()));
+    }
+
+    @Test
+    void 의성군_ISBN검색_도서관선택_불가능() {
+        assertEquals(2, count(config.uscUrlFormatter()));
+    }
+
+    @Test
+    void 서울시_영등포구() {
+        assertEquals(7, count(config.ydplibUrlFormatter()));
+    }
+
+    @Test
+    void 서울시_용산구() {
+        assertEquals(16, count(config.yslibraryUrlFormatter()));
+    }
+
+    @Test
+    void 충청남도_예산군() {
+        assertEquals(2, count(config.ysplibUrlFormatter()));
+    }
+
+    @Test
+    void 울산_울주군() {
+        assertEquals(1, count(config.usulUrlFormatter()));
+    }
+
+    @Test
+    void 울산_남부도서관() {
+        assertEquals(1, count(config.usnlUrlFormatter()));
+    }
+
+    @Test
+    void 울산_동부도서관() {
+        assertEquals(1, count(config.usdlUrlFormatter()));
+    }
+
+    @Test
+    void 태안군() {
+        assertEquals(1, count(config.taeanUrlFormatter()));
     }
 
     @Test
