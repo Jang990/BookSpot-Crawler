@@ -51,9 +51,12 @@ public class GangnamUrlFormatter implements IsbnSearchUrlFormatter {
 
     @Override
     public String format(LibraryPageDto dto) {
+        if("일원1동작은도서관".equals(dto.name())
+                || "일원2동문고".equals(dto.name())
+                || "수서동작은도서관".equals(dto.name()))
+            return null;
+
         String libraryCode = getLibraryCode(dto);
-        if(libraryCode == null)
-            throw new IllegalArgumentException(dto.toString());
         return "https://library.gangnam.go.kr/yllib/menu/10671/program/30002/plusSearchResultList.do?searchType=DETAIL&searchRecordCount=50&searchLibrary=%s&searchKey5=ISBN&searchKeyword5="
                 .formatted(libraryCode);
     }
