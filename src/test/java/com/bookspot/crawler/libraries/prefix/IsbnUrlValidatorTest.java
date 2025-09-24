@@ -24,12 +24,14 @@ import com.bookspot.crawler.libraries.prefix.jne.JneGoKrIsbnSearchUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.jne.JneGoKrUrlValidator;
 import com.bookspot.crawler.libraries.prefix.sen.SenGoKrSearchUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.sen.SenGoKrUrlValidator;
+import com.bookspot.crawler.libraries.prefix.simple.SimpleOcFormatterConfig;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class IsbnUrlValidatorTest {
     JsoupCrawler crawler = new JsoupCrawler();
+    SimpleOcFormatterConfig simpleOcFormatterConfig = new SimpleOcFormatterConfig();
 
     @Test
     void 도서관_검색을_지원하지_않는_홈페이지() {
@@ -174,7 +176,7 @@ class IsbnUrlValidatorTest {
     void 안산시_도서관_선택_불가능() {
         assertEquals(
                 27,
-                ValidatorTestRunner.countRelatedLibrary(new AnsanUrlFormatter())
+                ValidatorTestRunner.countRelatedLibrary(simpleOcFormatterConfig.ansanUrlFormatter())
         );
     }
 

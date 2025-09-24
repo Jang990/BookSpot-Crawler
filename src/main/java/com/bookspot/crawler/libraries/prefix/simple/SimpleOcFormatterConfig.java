@@ -2585,6 +2585,14 @@ public class SimpleOcFormatterConfig {
         );
     }
 
+    @Bean
+    public IsbnSearchUrlFormatter ansanUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "ansan.go.kr",
+                "https://lib.ansan.go.kr/KeywordSearchResult/"
+        );
+    }
+
     private static String queryString_jongbook_buhovalue() {
         return "?jongbook=&field1=IAL&value1=&aon1=AND&field2=IT&value2=&aon2=AND&field3=IA&value3=&aon3=AND&buho1=SIB&aon4=AND&buho2=KDC&buhovalue2=&aon5=AND&buhovalue3=&univname=&aon6=AND&buhovalue4=&govname=&sort=RK+DESC&msa=&formclass=&textlang=&simplelang=&startyear=&endyear=&limitpage=10&%EC%8B%A4local=+&startpage=1&mode=0&buhovalue1=";
     }
