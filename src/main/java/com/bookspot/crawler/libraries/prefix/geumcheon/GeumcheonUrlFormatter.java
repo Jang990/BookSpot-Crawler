@@ -3,9 +3,11 @@ package com.bookspot.crawler.libraries.prefix.geumcheon;
 import com.bookspot.crawler.libraries.file.LibraryPageDto;
 import com.bookspot.crawler.libraries.prefix.BasicUrlFormatElements;
 import com.bookspot.crawler.libraries.prefix.IsbnSearchUrlFormatter;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
+@Component
 public class GeumcheonUrlFormatter implements IsbnSearchUrlFormatter {
     private static final String prefix = "https://geumcheonlib.seoul.kr/geumcheonlib/uce/search/totalList.do?selfId=1097&manageCode=%s&advIsbn=";
 

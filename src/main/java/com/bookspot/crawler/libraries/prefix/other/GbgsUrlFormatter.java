@@ -2,7 +2,9 @@ package com.bookspot.crawler.libraries.prefix.other;
 
 import com.bookspot.crawler.libraries.prefix.BasicUrlFormatElements;
 import com.bookspot.crawler.libraries.prefix.IsbnSearchUrlFormatter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class GbgsUrlFormatter implements IsbnSearchUrlFormatter {
     @Override
     public String[] getDomains() {

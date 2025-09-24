@@ -3,7 +3,9 @@ package com.bookspot.crawler.libraries.prefix.cne;
 import com.bookspot.crawler.libraries.file.LibraryPageDto;
 import com.bookspot.crawler.libraries.prefix.BasicUrlFormatElements;
 import com.bookspot.crawler.libraries.prefix.IsbnSearchUrlFormatter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CneUrlFormatter implements IsbnSearchUrlFormatter {
     private static final String DOMAIN = "cne.go.kr";
 

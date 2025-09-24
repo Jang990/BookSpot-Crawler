@@ -3,10 +3,12 @@ package com.bookspot.crawler.libraries.prefix.other;
 import com.bookspot.crawler.libraries.file.LibraryPageDto;
 import com.bookspot.crawler.libraries.prefix.BasicUrlFormatElements;
 import com.bookspot.crawler.libraries.prefix.IsbnSearchUrlFormatter;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 import java.util.stream.Collectors;
 
+@Component
 public class GimhaeUrlFormatter implements IsbnSearchUrlFormatter {
     Map<String, DongAndCode> map = Map.ofEntries(
             Map.entry("김해율하도서관", new DongAndCode(0, "YH")),

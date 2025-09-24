@@ -3,9 +3,11 @@ package com.bookspot.crawler.libraries.prefix.jne;
 import com.bookspot.crawler.libraries.file.LibraryPageDto;
 import com.bookspot.crawler.libraries.prefix.BasicUrlFormatElements;
 import com.bookspot.crawler.libraries.prefix.IsbnSearchUrlFormatter;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
+@Component
 public class JneGoKrIsbnSearchUrlFormatter implements IsbnSearchUrlFormatter {
     private static final String DOMAIN = "jne.go.kr";
     private static final String COMMON_ISBN_PREFIX_FORMAT = "https://bglib.jne.go.kr/book/search_book/search.es?mid=a90101010100&searchKind=%s&vSrchText0=";

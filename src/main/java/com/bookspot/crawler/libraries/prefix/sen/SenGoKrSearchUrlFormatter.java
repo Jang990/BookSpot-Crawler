@@ -3,10 +3,12 @@ package com.bookspot.crawler.libraries.prefix.sen;
 import com.bookspot.crawler.libraries.file.LibraryPageDto;
 import com.bookspot.crawler.libraries.prefix.BasicUrlFormatElements;
 import com.bookspot.crawler.libraries.prefix.IsbnSearchUrlFormatter;
+import org.springframework.stereotype.Component;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 
+@Component
 public class SenGoKrSearchUrlFormatter implements IsbnSearchUrlFormatter {
     private static final String DOMAIN = "sen.go.kr";
     private static final String SUFFIX = "/intro/search/index.do?menu_idx=4&editMode=normal&search_text=";

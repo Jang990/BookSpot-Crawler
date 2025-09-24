@@ -3,8 +3,9 @@ package com.bookspot.crawler.libraries.prefix.bcl;
 import com.bookspot.crawler.libraries.file.LibraryPageDto;
 import com.bookspot.crawler.libraries.prefix.BasicUrlFormatElements;
 import com.bookspot.crawler.libraries.prefix.IsbnSearchUrlFormatter;
+import org.springframework.stereotype.Component;
 
-
+@Component
 public class BclGoKrUrlFormatter implements IsbnSearchUrlFormatter {
     private static final String DOMAIN_1 = "bcsl.go.kr";
     private static final String DOMAIN_2 = "bcl.go.kr";

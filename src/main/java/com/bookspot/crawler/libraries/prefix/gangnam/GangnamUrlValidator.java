@@ -7,12 +7,14 @@ import com.bookspot.crawler.libraries.prefix.IsbnSearchUrlFormatter;
 import com.bookspot.crawler.libraries.prefix.IsbnUrlValidator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
 @Slf4j
+@Component
 @RequiredArgsConstructor
 public class GangnamUrlValidator implements IsbnUrlValidator {
     private final JsoupCrawler jsoupCrawler;

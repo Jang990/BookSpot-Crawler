@@ -3,9 +3,11 @@ package com.bookspot.crawler.libraries.prefix.asan;
 import com.bookspot.crawler.libraries.file.LibraryPageDto;
 import com.bookspot.crawler.libraries.prefix.BasicUrlFormatElements;
 import com.bookspot.crawler.libraries.prefix.IsbnSearchUrlFormatter;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
+@Component
 public class AsanGoKrUrlFormatter implements IsbnSearchUrlFormatter {
     private static final String DOMAIN = "asan.go.kr";
     private static final String COMMON_SEARCH_PAGE = "https://lib.asan.go.kr/dls_le/index.php?act=searchIList&manageCode=%s&isbn=";

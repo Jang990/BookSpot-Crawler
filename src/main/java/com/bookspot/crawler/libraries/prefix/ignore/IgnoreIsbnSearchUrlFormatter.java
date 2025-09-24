@@ -2,9 +2,11 @@ package com.bookspot.crawler.libraries.prefix.ignore;
 
 import com.bookspot.crawler.libraries.file.LibraryPageDto;
 import com.bookspot.crawler.libraries.prefix.IsbnSearchUrlFormatter;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class IgnoreIsbnSearchUrlFormatter implements IsbnSearchUrlFormatter {
     public static List<String> WHITE_LIST = List.of(
             "agjlib.gangnam.go.kr",

@@ -3,9 +3,11 @@ package com.bookspot.crawler.libraries.prefix.other;
 import com.bookspot.crawler.libraries.file.LibraryPageDto;
 import com.bookspot.crawler.libraries.prefix.BasicUrlFormatElements;
 import com.bookspot.crawler.libraries.prefix.IsbnSearchUrlFormatter;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
+@Component
 public class GwangjuNamguUrlFormatter implements IsbnSearchUrlFormatter {
     @Override
     public String[] getDomains() {

@@ -2,9 +2,11 @@ package com.bookspot.crawler.libraries.prefix.daegu.dalseong;
 
 import com.bookspot.crawler.libraries.prefix.BasicUrlFormatElements;
 import com.bookspot.crawler.libraries.prefix.UnsupportedSearchLibraryFormatter;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
+@Component
 public class DalseongDaeguKrUrlFormatter extends UnsupportedSearchLibraryFormatter {
 
     @Override

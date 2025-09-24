@@ -3,10 +3,12 @@ package com.bookspot.crawler.libraries.prefix.gangnam;
 import com.bookspot.crawler.libraries.file.LibraryPageDto;
 import com.bookspot.crawler.libraries.prefix.BasicUrlFormatElements;
 import com.bookspot.crawler.libraries.prefix.IsbnSearchUrlFormatter;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Map;
 
+@Component
 public class GangnamUrlFormatter implements IsbnSearchUrlFormatter {
     private static final String DOMAIN = "gangnam.go.kr";
 

@@ -3,9 +3,11 @@ package com.bookspot.crawler.libraries.prefix.donghae;
 import com.bookspot.crawler.libraries.file.LibraryPageDto;
 import com.bookspot.crawler.libraries.prefix.BasicUrlFormatElements;
 import com.bookspot.crawler.libraries.prefix.IsbnSearchUrlFormatter;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
+@Component
 public class DongHaeUrlFormatter implements IsbnSearchUrlFormatter {
     private static final String DOMAIN = "donghaelib.go.kr";
     private static final String PREFIX = "https://donghaelib.go.kr/web/menu/10004/program/30002/searchResultList.do?searchType=DETAIL&searchLibrary=%s&searchWordIsbn=";

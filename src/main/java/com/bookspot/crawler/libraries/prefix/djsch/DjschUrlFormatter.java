@@ -3,9 +3,11 @@ package com.bookspot.crawler.libraries.prefix.djsch;
 import com.bookspot.crawler.libraries.file.LibraryPageDto;
 import com.bookspot.crawler.libraries.prefix.BasicUrlFormatElements;
 import com.bookspot.crawler.libraries.prefix.IsbnSearchUrlFormatter;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
+@Component
 public class DjschUrlFormatter implements IsbnSearchUrlFormatter {
     private static final String DOMAIN = "djsch.kr";
     private static Map<String, String> map = Map.of(
