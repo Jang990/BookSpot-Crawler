@@ -7,6 +7,7 @@ import com.bookspot.crawler.libraries.prefix.ignore.IgnoreIsbnSearchUrlFormatter
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -37,6 +38,8 @@ public class LibraryIsbnSearchPatternService {
                 );
             }
         }
+
+        result.sort(Comparator.comparing(LibraryIsbnSearchPattern::id));
 
         return result;
     }

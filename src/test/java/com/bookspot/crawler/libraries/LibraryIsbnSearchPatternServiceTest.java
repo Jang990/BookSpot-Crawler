@@ -14,10 +14,15 @@ class LibraryIsbnSearchPatternServiceTest {
     @Autowired
     private LibraryIsbnSearchPatternService service;
 
+    @Autowired
+    private LibraryIsbnSearchFileWriter writer;
+
     @Test
     void test() {
         List<LibraryIsbnSearchPattern> result = service.findAllPattern();
         assertEquals(result.size(), 1588);
+
+        writer.write("files/libraryHomePages_Prod_Result.csv", result);
     }
 
 }

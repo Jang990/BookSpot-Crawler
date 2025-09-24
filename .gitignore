@@ -38,3 +38,4 @@ out/
 
 ### prod 파일 제거
 /files/libraryHomePages_Prod.csv
+/files/libraryHomePages_Prod_Result.csv
