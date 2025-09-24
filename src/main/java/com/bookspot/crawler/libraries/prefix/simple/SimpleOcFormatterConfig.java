@@ -1,5 +1,6 @@
 package com.bookspot.crawler.libraries.prefix.simple;
 
+import com.bookspot.crawler.libraries.file.LibraryPageDto;
 import com.bookspot.crawler.libraries.prefix.BasicUrlFormatElements;
 import com.bookspot.crawler.libraries.prefix.IsbnSearchUrlFormatter;
 import org.springframework.context.annotation.Bean;
@@ -463,10 +464,29 @@ public class SimpleOcFormatterConfig {
 
     @Bean
     public IsbnSearchUrlFormatter dobongUrlFormatter() {
-        return new SimpleUrlFormatter(
-                "unilib.dobong.kr",
-                "https://www.unilib.dobong.kr/site/search/search00.do?cmd_name=bookandnonbooksearch&search_type=detail&manage_code=%s&search_txt=",
-                Map.ofEntries(
+        return new IsbnSearchUrlFormatter() {
+            List<String> nullNameList = List.of(
+                    "방학동육아종합지원센터", // TODO: 있긴하다. https://doccic.go.kr/rental/center_01_book.php
+                    "창동육아종합지원센터", // TODO: 있긴하다. https://doccic.go.kr/rental/center_02_book.php?pno=&mode=&sort=oi.regdate&sch_field=itemname&pagenumber=1&sch_age=&sch_bcode=&sch_value=9788936434120&listcnt=8
+                    "도봉구립학마을도서관", // TODO: ~26년 2월까지 휴관
+                    "지혜의등대 작은도서관", // TODO: 25.05~?? 휴관
+                    "도봉2동 공립 작은도서관", // 안보임...
+                    "방학3동 공립 작은도서관" // 안보임...
+            );
+
+            @Override
+            public String[] getDomains() {
+                return BasicUrlFormatElements.toMultiDomain("unilib.dobong.kr", "https://geuntae.co.kr");
+            }
+
+            @Override
+            public String getTemplate() {
+                return "https://www.unilib.dobong.kr/site/search/search00.do?cmd_name=bookandnonbooksearch&search_type=detail&manage_code=%s&search_txt=";
+            }
+
+            @Override
+            public Map<String, String> getLibraryNameAndCode() {
+                return Map.ofEntries(
                         Map.entry("도봉문화정보도서관", "MA"),
                         Map.entry("도봉아이나라도서관", "MB"),
                         Map.entry("도봉기적의도서관", "ME"),
@@ -491,24 +511,37 @@ public class SimpleOcFormatterConfig {
                         Map.entry("창5동 공립 작은도서관", "SU"),
                         Map.entry("도봉1동 공립 작은도서관", "SG"),
                         Map.entry("북서울중학교", "SC")
-                ),
-                List.of(
-                        "방학동육아종합지원센터", // TODO: 있긴하다. https://doccic.go.kr/rental/center_01_book.php
-                        "창동육아종합지원센터", // TODO: 있긴하다. https://doccic.go.kr/rental/center_02_book.php?pno=&mode=&sort=oi.regdate&sch_field=itemname&pagenumber=1&sch_age=&sch_bcode=&sch_value=9788936434120&listcnt=8
-                        "도봉구립학마을도서관", // TODO: ~26년 2월까지 휴관
-                        "지혜의등대 작은도서관", // TODO: 25.05~?? 휴관
-                        "도봉2동 공립 작은도서관", // 안보임...
-                        "방학3동 공립 작은도서관" // 안보임...
-                )
-        );
+                );
+            }
+
+            @Override
+            public String format(LibraryPageDto dto) {
+                if(nullNameList.contains(dto.name()))
+                    return null;
+                return IsbnSearchUrlFormatter.super.format(dto);
+            }
+        };
     }
 
     @Bean
     public IsbnSearchUrlFormatter jejuUrlFormatter() {
-        return new SimpleUrlFormatter(
-                "jeju.go.kr",
-                "https://www.jeju.go.kr/lib/service/search/simple.htm?lib=%s&q=",
-                Map.ofEntries(
+        return new IsbnSearchUrlFormatter() {
+            @Override
+            public String[] getDomains() {
+                return BasicUrlFormatElements.toMultiDomain(
+                        "jeju.go.kr",
+                        "jjdreamlib.or.kr" // 제주 꿈바당어린이도서관
+                );
+            }
+
+            @Override
+            public String getTemplate() {
+                return "https://www.jeju.go.kr/lib/service/search/simple.htm?lib=%s&q=";
+            }
+
+            @Override
+            public Map<String, String> getLibraryNameAndCode() {
+                return Map.ofEntries(
                         Map.entry("한라도서관", "MJ"),
                         Map.entry("제주 우당도서관", "MK"),
                         Map.entry("제주 탐라도서관", "ML"),
@@ -525,8 +558,9 @@ public class SimpleOcFormatterConfig {
                         Map.entry("제주 안덕산방도서관", "MF"),
                         Map.entry("제주 표선도서관", "MG"),
                         Map.entry("제주 꿈바당어린이도서관", "XY")
-                )
-        );
+                );
+            }
+        };
     }
 
     @Bean
@@ -712,17 +746,34 @@ public class SimpleOcFormatterConfig {
 
     @Bean
     public IsbnSearchUrlFormatter seosanUrlFormatter() {
-        return new SimpleUrlFormatter(
-                "seosan.go.kr",
-                "https://searcheb.seosan.go.kr/dls_le/index.php" + queryString_wdDataSearch(),
-                Map.ofEntries(
+        return new IsbnSearchUrlFormatter() {
+            @Override
+            public String[] getDomains() {
+                return BasicUrlFormatElements.toMultiDomain(
+                        "seosan.go.kr",
+                        "seosna.go.kr", // 동문 오타
+                        "seosnan.go.kr" // 운산 오타
+                );
+            }
+
+            @Override
+            public String getTemplate() {
+                return "https://searcheb.seosan.go.kr/dls_le/index.php" + queryString_wdDataSearch();
+            }
+
+            @Override
+            public Map<String, String> getLibraryNameAndCode() {
+                return Map.ofEntries(
                         Map.entry("대산도서관", "144032_AB"),
                         Map.entry("서산시립도서관", "144025_AA"),
                         Map.entry("부석작은도서관", "144123_BC"),
                         Map.entry("인지작은도서관", "144070_BA"),
-                        Map.entry("고북작은도서관", "144111_BB")
-                )
-        );
+                        Map.entry("고북작은도서관", "144111_BB"),
+                        Map.entry("동문작은도서관", "744153_BD"),
+                        Map.entry("운산작은도서관", "744183_DF")
+                );
+            }
+        };
     }
 
     @Bean
@@ -2119,12 +2170,424 @@ public class SimpleOcFormatterConfig {
     }
 
     @Bean
-    public IsbnSearchUrlFormatter UrlFormatter() {
+    public IsbnSearchUrlFormatter namhaeUrlFormatter() {
         return new SimpleUrlFormatter(
-                "usnl.or.kr"
+                "namhae.go.kr",
+                "https://lib.namhae.go.kr:8443/kolas3_01/BookSearch/search_result.do" + queryString_jongbook_buhovalue()
         );
     }
 
+    @Bean
+    public IsbnSearchUrlFormatter jecheonUrlFormatter() {
+        return new SimpleMultiUrlFormatter(
+                List.of(
+                        "jecheon.go.kr", // 제천시립
+                        "kidslib.org" // 제천기적의도서관
+                ),
+                "https://libsearch.jecheon.go.kr/bookSearch.do?detail=N&facetManageCode=%s&searchWord=",
+                Map.ofEntries(
+                        Map.entry("제천시립도서관", "MA"),
+                        Map.entry("여성도서관", "MG"),
+                        Map.entry("봉양도서관", "MF"),
+                        Map.entry("제천기적의도서관", "MB"),
+                        Map.entry("산책도서관", "ME"),
+                        Map.entry("신백한울타리도서관", "MC"),
+                        Map.entry("하소내보물1호도서관", "MD")
+                )
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter imlaUrlFormatter() {
+        return new SimpleMultiUrlFormatter(
+                List.of(
+                        "imla.kr", // 수봉, 율목
+                        ".ylib.or.kr" // 영종
+                ),
+                "https://www.imla.kr:7443/search/list.jsp?pageSize=30&MANAGE_CODE=%s&ST_CODE=",
+                Map.ofEntries(
+                        Map.entry("인천광역시 수봉도서관","128017"),
+                        Map.entry("인천광역시 율목도서관","128046"),
+                        Map.entry("인천광역시 영종도서관","128015")
+                )
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter hongsanlibUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "hongsanlib.or.kr",
+                "https://www.hongsanlib.or.kr/dls_lt/index.php" + queryString_wdDataSearch_searchResultList(),
+                Map.ofEntries(
+                        Map.entry("홍산공공도서관", "MA"),
+                        Map.entry("행복담은도서관", "MB")
+                )
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter hmlibUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "hmlib.or.kr",
+                "https://www.hmlib.or.kr/dls_lt/index.php" + queryString_wdDataSearch_searchResultList(),
+                Map.ofEntries(
+                        Map.entry("해밀도서관", "MA")
+                )
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter hamanUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "haman.go.kr",
+                "http://cwl.haman.go.kr:8800/kolas3_2018/BookSearch/search_result.do?govname=&msa=&formclass=&textlang=&simplelang=&limitpage=30&local=&jongbook=on&buho1=SIB&startpage=1&mode=0&buhovalue1="
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter gunpolibUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "gunpolib.go.kr",
+                "https://www.gunpolib.go.kr/#/search/ex?rq=BRANCH=6&all=1|l|a|",
+                Map.ofEntries(
+                        Map.entry("군포시중앙도서관", "6")
+                )
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter gbUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "gb.go.kr",
+                "https://www.gb.go.kr/lib/solars/book/search.tc?mn=2355&pageSeq=1594&searchType=detail&searchAt=Y&searchCondition=all&searchKeyword=&detailTitle=&detailAuthor=&detailPublisher=&detailKeyword=&detailPublisherYear=&materialType=&location=&pagingUnit=30&detailIsbn="
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter daejeonUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "daejeon.go.kr",
+                "https://www.daejeon.go.kr/hanbatlibrary/dataSearch.do?menuSeq=6222#" + "?"
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter cngUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "cng.go.kr",
+                "https://ysl.cng.go.kr/kolas3_2018/BookSearch/search_result.do" + queryString_jongbook_buhovalue()
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter capcUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "capc.go.kr",
+                "https://www.capc.go.kr/library/dls_lt/index.php?mod=wdDataSearch&act=searchResultList&deSearch=%s&isbn=",
+                Map.ofEntries(
+                        Map.entry("천안아산상생협력센터도서관", "1")
+                )
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter uLibraryUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "small.u-library.kr",
+                "https://small.u-library.kr/search/tot"
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter seocheonUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "seocheon.go.kr",
+                "https://seocheon.go.kr/lib/menu/10020/program/30002/searchResultList.do" + queryString_searchKeyword5(),
+                Map.ofEntries(
+                        Map.entry("장항공공도서관", "MA"),
+                        Map.entry("판교작은도서관", "MB"),
+                        Map.entry("문산작은도서관", "MC"),
+                        Map.entry("물버들마을도서관", "ME")
+                )
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter ulsanUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "ulsan.go.kr",
+                "https://library.ulsan.go.kr/us/search/selectBookSearch.do?searchCmd=detail&search_txt=9788936434120&searchIsbn="
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter mujuUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "muju.go.kr",
+                "https://library.muju.go.kr/main/site/search/search00.do" + queryString_isbn_issn_bookandnonbooksearch(),
+                Map.ofEntries(
+                        Map.entry("무주형설지공도서관","MA"),
+                        Map.entry("무주만나작은도서관","MB"),
+                        Map.entry("무주반딧불작은도서관","MC"),
+                        Map.entry("무주안성작은도서관","MD"),
+                        Map.entry("무주샘누리작은도서관","ME"),
+                        Map.entry("무주오색단풍작은도서관","MF"),
+                        Map.entry("무주무풍십승지작은도서관","MG")
+                )
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter chungnamUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "chungnam.go.kr",
+                        "https://lib.sje.go.kr/prog/bookSearch/sjelib/sub01_01/list.do?reg_no=&searchCaseChk=&non_contact_yn=&search_txt=9788936434120&radio_search=bookSearch&searchKeyword=9788936434120"
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter sjeUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "sje.go.kr",
+                "https://lib.sje.go.kr/prog/bookSearch/sjelib/sub01_01/list.do?search_txt="
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter jpUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "jp.go.kr",
+                "https://lib.jp.go.kr/dls_lt/index.php" + queryString_wdDataSearch_searchResultList(),
+                Map.ofEntries(
+                        Map.entry("증평군립도서관", "MA"),
+                        Map.entry("창의파크작은도서관", "BA"),
+                        Map.entry("어울림공립작은도서관", "CA")
+                )
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter jeonnamUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "jeonnam.go.kr",
+                "https://lib.jeonnam.go.kr/plus/search_list.php?jongbook=1&act=2&limitpage=10&field1=IAL&aon1=AND&field2=IT&field3=IA&field4=IP&field5=IK&buho1=SIB&buho2=KDC&value1=&value2=+&aon2=AND&value3=&aon3=AND&value4=&aon4=AND&value5=&aon5=AND&value6=&aon5=AND&formclass=&sort=&buhovalue1="
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter jeongseonUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "jeongseon.go.kr",
+                "https://lib.jeongseon.go.kr/intro/total?searchKeyword=pageno=1&display=30&search_type=normal&facet_manage_code=%s&search_txt=",
+                Map.ofEntries(
+                        Map.entry("정선군립도서관","MB"),
+                        Map.entry("사북공공도서관","MA")
+                )
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter haenamUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "haenam.go.kr",
+                "https://lib.haenam.go.kr/dls_lt/index.php" + queryString_wdDataSearch_searchResultList(),
+                Map.ofEntries(
+                        Map.entry("해남군립도서관", "MA")
+                )
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter gyeongnamUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "gyeongnam.go.kr",
+                "https://lib.gyeongnam.go.kr/index.lib?menuCd=DOM_000000201001014000&search_select=search_isbn_issn&search_text="
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter guryeUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "gurye.go.kr",
+                "https://lib.gurye.go.kr/BookSearch/detail?"
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter boeunUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "boeun.go.kr",
+                "https://lib.boeun.go.kr/dls_lt/index.php" + queryString_wdDataSearch_searchResultList(),
+                Map.ofEntries(
+                        Map.entry("보은군립도서관", "MA")
+                )
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter kblibUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "kblib.or.kr",
+                "https://kblib.or.kr/kbLib/uce/book/bookSearchList?ea_isbn="
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter jccfreshUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "jccfresh.or.kr",
+                "https://libsearch.jecheon.go.kr/bookSearch.do?detail=Y&manageCode=%s&searchIsbn=",
+                Map.ofEntries(
+                        Map.entry("시립도서관", "MA"),
+                        Map.entry("여성도서관", "MG"),
+                        Map.entry("봉양도서관", "MF"),
+                        Map.entry("기적의 도서관", "MB"),
+                        Map.entry("산책도서관", "ME"),
+                        Map.entry("신백한울타리도서관", "MC"),
+                        Map.entry("하소내보물1호도서관", "MD")
+                )
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter hongseongUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "hongseong.go.kr",
+                "https://hongseong.go.kr/prog/bookSearch/gclib/sub02_01/list.do?search_type=normal&manage_codes=%s&search_txt=",
+                Map.ofEntries(
+                        Map.entry("광천공공도서관", "MA"),
+                        Map.entry("글마루작은도서관", "MB"),
+                        Map.entry("한울작은도서관", "MC"),
+                        Map.entry("홍화문작은도서관", "MD"),
+                        Map.entry("늘배움터 작은도서관", "MQ"),
+                        Map.entry("LH남장3단지작은도서관", "MP"),
+                        Map.entry("경남아너스빌작은도서관", "MG"),
+                        Map.entry("내포마을도서관", "ME"),
+                        Map.entry("다올책사랑방작은도서관", "MK"),
+                        Map.entry("롯데캐슬작은도서관", "ML"),
+                        Map.entry("모아작은도서관", "MH"),
+                        Map.entry("밝맑도서관", "MM"),
+                        Map.entry("신동아작은도서관", "MF"),
+                        Map.entry("우리함께작은도서관", "MN"),
+                        Map.entry("우아영작은도서관", "MJ")
+                )
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter brcnUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "brcn.go.kr",
+                "https://brcn.go.kr/lib/front/index.php" + queryString_isbn_issn(),
+                Map.ofEntries(
+                        Map.entry("보령시중앙도서관", "MA"), // 시립 = 보령시중앙도서관이랑 주소일치
+                        Map.entry("죽정도서관", "MC"),
+                        Map.entry("주산도서관", "ME"),
+                        Map.entry("북드라이브스루", "MP"),
+                        Map.entry("오천작은도서관", "MB"),
+                        Map.entry("대천항작은도서관", "MD"),
+                        Map.entry("서고", "MG"),
+                        Map.entry("문화의전당작은도서관", "MH"),
+                        Map.entry("청라애작은도서관", "MM"),
+                        Map.entry("성주고을작은도서관", "MN"),
+                        Map.entry("주교작은도서관", "MO")
+                )
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter yclibUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "yclib.go.kr",
+                "https://www.yclib.go.kr/homepage/dls_lt/index.php" + queryString_wdDataSearch_searchResultList(),
+                Map.ofEntries(
+                        Map.entry("영천시립도서관", "MA"),
+                        Map.entry("완산뜨락작은도서관", "BA"),
+                        Map.entry("북안작은도서관", "BC")
+                )
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter shinanUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "shinan.go.kr",
+                "https://shinanlib.kr/dls_lt/index.php?mod=wdDataSearch&act=searchResultList&deSearch=1s&isbn="
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter sblUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "sbl.or.kr",
+                "https://www.sbl.or.kr/dls_lt/index.php" + queryString_wdDataSearch_searchResultList(),
+                Map.ofEntries(
+                        Map.entry("사북공공도서관", "MA"),
+                        Map.entry("정선꿈꾸는도서관", "SA"),
+                        Map.entry("좋은씨앗작은도서관", "SB"),
+                        Map.entry("다니엘작은도서관", "SC"),
+                        Map.entry("꿈을파는작은도서관", "SF"),
+                        Map.entry("길운도서관", "SH"),
+                        Map.entry("아우라지작은도서관", "SI"),
+                        Map.entry("무지개작은도서관", "SL"),
+                        Map.entry("생각이자라는도서관", "SM"),
+                        Map.entry("노엘작은도서관", "SN"),
+                        Map.entry("꿈을심는작은도서관", "SO"),
+                        Map.entry("행복한어린이작은도서관", "SP"),
+                        Map.entry("꽃개비작은도서관", "SD"),
+                        Map.entry("정선스마트도서관(종합)", "ZA"),
+                        Map.entry("정선스마트도서관(아동)", "ZB"),
+                        Map.entry("억새스마트도서관(종합)", "ZC"),
+                        Map.entry("억새스마트도서관(아동)", "ZD")
+                )
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter neutinamuUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "neutinamu.org",
+                "https://www.neutinamu.org/page/search/result.php?tsch="
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter myclibUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "myclib.or.kr",
+                "https://www.myclib.or.kr/web/ksh/EgovBookSearchList.do?mnNo=301000000&schNm=",
+                Map.of(),
+                List.of("밀양시립영어도서관")
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter gjlibUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "gjlib.go.kr",
+                "https://www.gjlib.go.kr/BookSearch/simple" + "?"
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter sejongNlUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "sejong.nl.go.kr",
+                "https://sejong.nl.go.kr/search/searchStorage.do?upperMenuId=O200&menuId=O201&kwd="
+        );
+    }
+
+    @Bean
+    public IsbnSearchUrlFormatter jeonbukUrlFormatter() {
+        return new SimpleUrlFormatter(
+                "jeonbuk.go.kr",
+                "https://library.jeonbuk.go.kr:8443/kolas3_01/BookSearch/search_result.do?jongbook=_book&buho1=SIB&msa=&formclass=&textlang=&simplelang=&mgc=MA&limitpage=10&buhovalue1="
+        );
+    }
+
+    private static String queryString_jongbook_buhovalue() {
+        return "?jongbook=&field1=IAL&value1=&aon1=AND&field2=IT&value2=&aon2=AND&field3=IA&value3=&aon3=AND&buho1=SIB&aon4=AND&buho2=KDC&buhovalue2=&aon5=AND&buhovalue3=&univname=&aon6=AND&buhovalue4=&govname=&sort=RK+DESC&msa=&formclass=&textlang=&simplelang=&startyear=&endyear=&limitpage=10&%EC%8B%A4local=+&startpage=1&mode=0&buhovalue1=";
+    }
 
     private static String queryString_searchWordIsbn() {
         return "?searchType=DETAIL&searchRecordCount=30&searchLibrary=%s&searchWordIsbn=";
@@ -2136,6 +2599,10 @@ public class SimpleOcFormatterConfig {
 
     private static String queryString_wdDataSearch_NoRegion() {
         return "?mod=wdDataSearch&act=searchResultList&deSearch=1&isbn=";
+    }
+
+    private static String queryString_wdDataSearch_searchResultList() {
+        return "?mod=wdDataSearch&act=searchResultList&manageCode=%s&isbn=";
     }
 
     private static String queryString_searchKeyword5() {

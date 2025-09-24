@@ -21,7 +21,7 @@ public class DaeguFormatterConfig {
                 return BasicUrlFormatElements.toMultiDomain(
                         "daegu.go.kr/dalseolib",
 
-                        "daegu.go.kr/beomeo", "daegu.go.kr/gosan", "daegu.go.kr/yonghak", // 수성구
+                        "daegu.go.kr/beomeo", "daegu.go.kr/gosan", "daegu.go.kr/yonghak", "library.suseong.kr/yonghak", // 수성구
 
                         "daegu.go.kr/bukgs", "daegu.go.kr/buktj", // 북구 (+ 태전)
 
@@ -60,6 +60,7 @@ public class DaeguFormatterConfig {
                         Map.entry("수성구립사월책문화센터도서관", "FG"),
                         Map.entry("수성구립무학숲도서관", "BH"),
                         Map.entry("수성구립용학도서관", "BE"),
+                        Map.entry("수성구립파동도서관", "BG"),
 
                         // 북구
 //                            Map.entry("대현도서관", "BB"),

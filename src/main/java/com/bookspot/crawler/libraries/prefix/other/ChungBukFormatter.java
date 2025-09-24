@@ -26,6 +26,7 @@ public class ChungBukFormatter implements IsbnSearchUrlFormatter {
                 "http://www.eselib.go.kr/", // 음성교육도서관
                 "http://www.gwelib.go.kr/", // 금왕교육도서관
                 "http://dyelib.go.kr/" // 단양교육도서관
+
         };
     }
 

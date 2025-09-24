@@ -99,9 +99,9 @@ class IsbnUrlValidatorTest {
     }
 
     @Test
-    void 대구_달성군_도서관_검색_미지원() {
+    void 대구_달성군_도서관() {
         ValidatorTestRunner.run(
-                8,
+                9,
                 new DalseongDaeguKrUrlFormatter(),
                 new DalseongDaeguKrUrlValidator()
         );

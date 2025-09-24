@@ -141,12 +141,12 @@ class SimpleOcFormatterConfigTest {
 
     @Test
     void 도봉구() {
-        assertEquals(27, count(config.dobongUrlFormatter()));
+        assertEquals(28, count(config.dobongUrlFormatter()));
     }
 
     @Test
     void 제주시_ISBN_미지원() {
-        assertEquals(15, count(config.jejuUrlFormatter()));
+        assertEquals(16, count(config.jejuUrlFormatter()));
     }
 
     @Test
@@ -190,8 +190,8 @@ class SimpleOcFormatterConfigTest {
     }
 
     @Test
-    void 서산() {
-        assertEquals(5, count(config.seosanUrlFormatter()));
+    void 충남_서산() {
+        assertEquals(7, count(config.seosanUrlFormatter()));
     }
 
     @Test
@@ -431,7 +431,7 @@ class SimpleOcFormatterConfigTest {
 
     @Test
     void 성남시() {
-        assertEquals(18, count(config.snlibUrlFormatter()));
+        assertEquals(19, count(config.snlibUrlFormatter()));
     }
 
     @Test
@@ -571,8 +571,157 @@ class SimpleOcFormatterConfigTest {
     }
 
     @Test
-    void sample() {
-        assertEquals(20, count(config.UrlFormatter()));
+    void 충북_제천시립() {
+        // 제천시립도서관
+        assertEquals(2, count(config.jecheonUrlFormatter()));
+    }
+
+    @Test
+    void 인천_중구() {
+        assertEquals(3, count(config.imlaUrlFormatter()));
+    }
+
+    @Test
+    void 충남_부여군_홍산면() {
+        assertEquals(1, count(config.hongsanlibUrlFormatter()));
+    }
+
+    @Test
+    void 부천시_해밀() {
+        assertEquals(1, count(config.hmlibUrlFormatter()));
+    }
+
+    @Test
+    void 군포시_중앙도서관() {
+        // 꽤 많음
+        assertEquals(1, count(config.gunpolibUrlFormatter()));
+    }
+
+    @Test
+    void 천안_아산_상생협력센터도서관() {
+        assertEquals(1, count(config.capcUrlFormatter()));
+    }
+
+    @Test
+    void 충청남도_서천_장항공공도서관() {
+        assertEquals(1, count(config.seocheonUrlFormatter()));
+    }
+
+    @Test
+    void 전북_무주군() {
+        assertEquals(1, count(config.mujuUrlFormatter()));
+    }
+
+    @Test
+    void 충청북도_증평군() {
+        assertEquals(1, count(config.jpUrlFormatter()));
+    }
+
+    @Test
+    void 강원도_정선군립() {
+        assertEquals(1, count(config.jeongseonUrlFormatter()));
+    }
+
+    @Test
+    void 전남_해남군립도서관() {
+        assertEquals(1, count(config.haenamUrlFormatter()));
+    }
+
+    @Test
+    void 충청북도_보은군립() {
+        assertEquals(1, count(config.boeunUrlFormatter()));
+    }
+
+    @Test
+    void 충북_제천시() {
+        assertEquals(1, count(config.jccfreshUrlFormatter()));
+    }
+
+    @Test
+    void 충남_홍성군() {
+        assertEquals(1, count(config.hongseongUrlFormatter()));
+    }
+
+    @Test
+    void 보령시_시립() {
+        assertEquals(1, count(config.brcnUrlFormatter()));
+    }
+
+    @Test
+    void 경상북도_영천시립() {
+        assertEquals(1, count(config.yclibUrlFormatter()));
+    }
+
+    @Test
+    void 강원도_정선군_사북공공도서관() {
+        assertEquals(1, count(config.sblUrlFormatter()));
+    }
+
+    @Test
+    void 경상남도_밀양시립() {
+        assertEquals(2, count(config.myclibUrlFormatter()));
+    }
+
+    @Test
+    void 전북_도청_도서관() {
+    }
+
+    // 단일검색은 기본적으로 도서관 선택 미지원
+    @Test
+    void 단일도서관() {
+        // 남해화전도서관
+        assertEquals(1, count(config.namhaeUrlFormatter()));
+
+        // 함안군립칠원도서관
+        assertEquals(1, count(config.hamanUrlFormatter()));
+
+        // 경북도서관
+        assertEquals(1, count(config.gbUrlFormatter()));
+
+        // 대전 중구 한밭도서관 - ISBN 검색 미지원
+        assertEquals(1, count(config.daejeonUrlFormatter()));
+
+        // 창녕군 영산도서관
+        assertEquals(1, count(config.cngUrlFormatter()));
+
+        // 대전 서구 - 성남작은도서관 - ISBN 검색 미지원
+        assertEquals(1, count(config.uLibraryUrlFormatter()));
+
+        // 울산도서관
+        assertEquals(1, count(config.ulsanUrlFormatter()));
+
+        // 충남도서관 - ISBN 검색 미지원
+        assertEquals(1, count(config.chungnamUrlFormatter()));
+
+        // 세종평생교육학습관
+        assertEquals(1, count(config.sjeUrlFormatter()));
+
+        // 전라남도 도립 도서관(전라남도립도서관)
+        assertEquals(1, count(config.jeonnamUrlFormatter()));
+
+        // 경남대표도서관
+        assertEquals(1, count(config.gyeongnamUrlFormatter()));
+
+        // 충남도서관 - ISBN 검색 미지원
+        assertEquals(1, count(config.guryeUrlFormatter()));
+
+        // 인천 꿈벗도서관
+        assertEquals(1, count(config.kblibUrlFormatter()));
+
+        // 전북 신안군립 도서관
+        assertEquals(1, count(config.shinanUrlFormatter()));
+
+        // 느티나무 도서관 - 경기도 용인시
+        assertEquals(1, count(config.neutinamuUrlFormatter()));
+
+        // 전라남도 강진군 도서관 - ISBN 검색 미지원
+        assertEquals(1, count(config.gjlibUrlFormatter()));
+
+        // 국립세종도서관
+        assertEquals(1, count(config.sejongNlUrlFormatter()));
+
+        // 전북도청도서관
+        assertEquals(1, count(config.jeonbukUrlFormatter()));
     }
 
     private long count(IsbnSearchUrlFormatter formatter) {

@@ -9,8 +9,8 @@ class LibraryCodesCrawlerTest {
     @Test
     void test() {
         crawler.crawlLi(
-                "https://www.sblib.seoul.kr/library/menu/10013/program/30004/searchResultList.do?categoryManageCode=ME&detailISBN=9788936434120",
-                "#contents > div > div.searchCheckBox.mt10 > div > ul > li"
+                "https://library.daegu.go.kr/dalseonglib/intro/search/index.do?menu_idx=9&booktype=BOOKANDNONBOOK&title=9788936434120#search_result",
+                "#libraryList > div:nth-child(2) > ul > li"
         );
     }
 
