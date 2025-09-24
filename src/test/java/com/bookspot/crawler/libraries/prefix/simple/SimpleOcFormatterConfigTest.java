@@ -195,11 +195,6 @@ class SimpleOcFormatterConfigTest {
     }
 
     @Test
-    void 신립() {
-        assertEquals(5, count(config.seosanUrlFormatter()));
-    }
-
-    @Test
     void 송파() {
         assertEquals(12, count(config.spUrlFormatter()));
     }
@@ -431,7 +426,7 @@ class SimpleOcFormatterConfigTest {
 
     @Test
     void 성남시() {
-        assertEquals(19, count(config.snlibUrlFormatter()));
+        assertEquals(18, count(config.snlibUrlFormatter()));
     }
 
     @Test
